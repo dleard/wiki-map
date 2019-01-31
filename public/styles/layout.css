@@ -6,6 +6,6 @@ body h1 {
   color: #244751;
 }
 
-/* #map {
-  width: inherit;
-} */
+#meta-pane {
+  height: 10rem;
+}
