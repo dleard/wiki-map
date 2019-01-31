@@ -1,7 +1,37 @@
 body {
-  background-color: #EEE;
+  color: dimgray;
+  background-color: dimgray;
 }
+
+/* #EEE */
 
 body h1 {
   color: #244751;
+}
+
+#primary-main {
+  position: relative;
+  width: 80rem;
+  margin: 0px auto 0px auto;
+  color: grey;
+  background-color: grey;
+  height: 100vw;
+}
+
+#utility-section {
+  top: 5rem;
+  position: relative;
+  width: 80rem;
+  height: 10rem;
+  color: blue;
+  background-color: lightgrey;
+}
+
+#browsing-section {
+  top: 7rem;
+  position: relative;
+  width: 80rem;
+  height: 80rem;
+  color: red;
+  background-color: lightgray;
 }
