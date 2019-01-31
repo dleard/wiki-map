@@ -1,24 +1,8 @@
-nav {
-  
-  padding: 0px 2em 0px 2em;
-  color: #e8fdff;
-  background-color: darkblue;
-  font-size: 2rem;
-  position: fixed;
-  width: 100%;
-  height: 80px;
-  z-index: 3;
-  top: 0px;
+nav {}
   
 }
 
 
 #nav-bar .header {
-  position: fixed;
-  margin-left: 10px;
-  /* top: 28px; */
-  float: left;
-  line-height: 80px;
-  
 
 }
