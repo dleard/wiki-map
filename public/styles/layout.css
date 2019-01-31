@@ -9,3 +9,7 @@ body h1 {
 #meta-pane {
   height: 10rem;
 }
+
+#browser-pane {
+  height: 100vh;
+}
