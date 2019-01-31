@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('userid');
     table.integer('mapid');
-    table.foreign('userid').references('id').inTable('users').onDelete('cascade');
-    table.foreign('mapid').references('id').inTable('maps').onDelete('cascade');
+    table.foreign('userid').references('id').inTable('users').onDelete('CASCADE');
+    table.foreign('mapid').references('id').inTable('maps').onDelete('CASCADE');
   });
 };
 

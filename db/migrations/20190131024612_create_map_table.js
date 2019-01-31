@@ -6,8 +6,8 @@ exports.up = (knex, Promise) => {
     table.float('startlong', 8, 3);
     table.integer('likes');
     table.string('type');
-    table.integer('creatorid');
-    table.foreign('creatorid').references('id').inTable('users').onDelete('cascade');
+    table.integer('creatorid').notNullable().references('id').inTable('users').onDelete('CASCADE').index();
+    // table.foreign('creatorid').notNullable().references('id').inTable('users').onDelete('CASCADE').index();
   });  
 };
 
