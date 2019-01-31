@@ -5,7 +5,8 @@ exports.up = (knex, Promise) => {
     table.float('startlat', 8, 3);
     table.float('startlong', 8, 3);
     table.integer('likes');
-    table.integer('creatorid').references('id').inTable('users');
+    table.string('type');
+    table.integer('creatorid');
   });  
 };
 
