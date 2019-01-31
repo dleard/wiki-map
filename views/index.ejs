@@ -24,7 +24,7 @@
          * element that contains the map. */
         #map {
           height: 600px;
-          width: 80rem;
+          width: inherit;
           margin: 0px auto 0px auto;
           top: 3em;
         }
@@ -38,32 +38,37 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">CuteMap</a>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">CuteMap</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Maps</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
       </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Maps</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
+    </nav>
+    <div class='container'>
+      <div class="row">
+        <div class="col" style='background-color:lightslategray'>
+          <!-- 1 of 1 -->
+          <div class='col' id="map"></div>
+          <script src="/scripts/initmap.js"></script>
+          <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGvUWB72E3Dszv0iI8pkFtbLj7BonXvTU&callback=initMap">
+          </script>
+        </div>
+      </div>
     </div>
-  </nav>
-    <main id='primary-main'>
-    <h1>Hello World!</h1>
-    <div id="map"></div>
-    <script src="/scripts/initmap.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGvUWB72E3Dszv0iI8pkFtbLj7BonXvTU&callback=initMap">
-    </script>
+    
+    
     <section id='utility-section'></section>
     <section id='browsing-section'></section>
 
-
-    </main>
   </body>
 </html>
