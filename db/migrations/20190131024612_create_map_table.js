@@ -7,6 +7,7 @@ exports.up = (knex, Promise) => {
     table.integer('likes');
     table.string('type');
     table.integer('creatorid');
+    table.foreign('creatorid').references('id').inTable('users').onDelete('cascade');
   });  
 };
 

@@ -10,6 +10,8 @@ exports.up = function(knex, Promise) {
     table.string('imgsrc');
     table.integer('contributorid');
     table.integer('mapid');
+    table.foreign('contributorid').references('id').inTable('users').onDelete('cascade');
+    table.foreign('mapid').references('id').inTable('maps').onDelete('cascade');
   });
 };
 
