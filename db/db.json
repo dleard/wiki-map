@@ -5,5 +5,12 @@
       "name": "Dylan",
       "type": "lightning lizard"
     } 
+  ],
+  "maps": [
+    {
+      "id": 1,
+      "name": "Places Lindsey has dissed Nick",
+      "city": "Victoria"
+    }
   ]
 }

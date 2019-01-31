@@ -8,12 +8,14 @@ const db = require('../db/db.json');
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("maps")
-      .then((results) => {
-        res.json(results);
-    });
+    console.log(db);
+    res.send(db.maps);
+    // knex
+    //   .select("*")
+    //   .from("maps")
+    //   .then((results) => {
+    //     res.json(results);
+    // });
   });
 
   return router;
