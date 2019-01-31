@@ -43,6 +43,10 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/login", (req, res) => {
+  res.redirect("/index");
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
