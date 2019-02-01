@@ -8,7 +8,7 @@ module.exports = (knex) => {
   router.get("/", (req, res) => {
     knex
       .select("*")
-      .from("users")
+      .from("maps")
       .then((results) => {
         res.json(results);
     });
@@ -16,27 +16,18 @@ module.exports = (knex) => {
 
   router.get("/:id", (req, res) => {
     knex
-      .select("*")
-      .from("users")
-      .where({id: `${req.params.id}`})
-      .then((results) => {
-        res.json(results[0]);
-    });
-  });
-
-  router.get("/:id/maps", (req, res) => {
-    knex
-      .select("*")
-      .from("maps")
-      .join('users', 'maps.creatorid', '=', 'users.id')
-      .where({creatorid: `${req.params.id}`})
+      .select("lat", "long")
+      .from("markers")
+      .join("maps", "markers.mapid", "=", "maps.id" )
+      .where({'maps.id': `${req.params.id}`})
       .then((results) => {
         res.json(results);
-    });
+      });
   });
 
-  router.post("/:id/favorites", (req, res) => {
-    knex("favorites")
+  router.post("/", (req, res) => {
+    console.log(req.body);
+    knex("maps")
       .insert(req.body)
       .then(() => {
         res.sendStatus(200);
