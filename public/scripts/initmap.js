@@ -1,4 +1,4 @@
-function initMap() {
+function initMap(lat, long) {
 
     // Create a new StyledMapType object, passing it an array of styles,
     // and the name to be displayed on the map type control.
@@ -215,7 +215,7 @@ function initMap() {
     // Create a map object, and include the MapTypeId to add
     // to the map type control.
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 48.427, lng: -123.367},
+      center: {lat: lat || 48.427, lng: long || -123.367},
       zoom: 13,
       mapTypeControlOptions: {
         mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
