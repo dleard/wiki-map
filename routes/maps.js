@@ -9,6 +9,7 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("maps")
+      .join("users", "users.id", "=", "maps.creatorid")
       .then((results) => {
         res.json(results);
     });

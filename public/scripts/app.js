@@ -82,7 +82,7 @@ $(() => {
     //do biz
     const article = $('<article>').addClass("maplisting");
     
-    const avatar = $('<img>').addClass("logo").attr('src', mapObject.imgsrc).attr('width', '50px').attr('height', '50px').appendTo(article);
+    const avatar = $('<img>').addClass("logo").attr('src', mapObject.avatar).attr('width', '50px').attr('height', '50px').appendTo(article);
     const h3 = $('<h3>').text(mapObject.name).appendTo(article);
     const footer = $('<footer>').appendTo(article);
     const h4_1 = $('<h4>').text(mapObject.handle).appendTo(footer);
