@@ -69,14 +69,26 @@ $(() => {
   });;
 
   // EDIT A MARKER
-  const newMarker = {address: '1234 sucks', name: 'bad place'}
+  const editMarker = {address: '1234 sucks', name: 'bad place'}
   $.ajax({
     method: "PUT",
     url: `/api/markers/${markerid}`,
-    data: newMarker
+    data: editMarker
   }).done((marker) => {
     console.log(marker);
     // $("<div>").text(user.name).appendTo($("body"));
   });;
+  
+  const newMarker = {id: 6, name: 'booger palace', address: '123 yuck', lat: 48, long: -123, type: 'custom', contributorid: 2, mapid: 1};
+
+  $.ajax({
+    method: "POST",
+    url: '/api/markers',
+    data: newMarker
+  }).done ((marker) => {
+    console.log(marker);
+    // $("<div>").text(user.name).appendTo($("body"));
+  });
   */
 });
+

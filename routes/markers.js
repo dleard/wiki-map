@@ -34,5 +34,13 @@ module.exports = (knex) => {
     });
   });
 
+  router.post("/", (req, res) => {
+    knex("markers")
+    .insert(req.body)
+    .then((results) => {
+      console.log(results);
+    })
+  });
+
   return router;
 }
