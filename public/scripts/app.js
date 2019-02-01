@@ -54,6 +54,7 @@ function doNothing () {
 }
 
 $(() => {
+<<<<<<< HEAD
 <<<<<<< e0e9d50a011b507618e15544b004a76c15597e0e
   initMap();
   // $.ajax({
@@ -66,6 +67,8 @@ $(() => {
   //   }
   // });;
 =======
+=======
+>>>>>>> 98e12ccc9eabffee74a36a551d696e7c39e878f2
 
   $.ajax({
     method: "GET",
