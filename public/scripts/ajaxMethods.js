@@ -1,6 +1,6 @@
 const userid = 1;
 const mapid = 1;
-const markerid = 1;
+const markerid = 1; 
 
 // GET ALL MAPS
 $.ajax({
