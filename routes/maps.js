@@ -20,7 +20,7 @@ module.exports = (knex) => {
 
   router.get("/:id", (req, res) => {
     knex
-      .select("*")
+      .select("lat", "long")
       .from("markers")
       .join("maps", "markers.mapid", "=", "maps.id" )
       .then((results) => {
