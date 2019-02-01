@@ -2,21 +2,36 @@
 
 function saveData() {
   console.log("saving data!");
-  var name = escape(document.getElementById('name').value);
-  var address = escape(document.getElementById('address').value);
-  var type = document.getElementById('type').value;
-  var latlng = marker.getPosition();
-  var url = 'phpsqlinfo_addrow.php?name=' + name + '&address=' + address +
-            '&type=' + type + '&lat=' + latlng.lat() + '&lng=' + latlng.lng();
+  // var name = escape(document.getElementById('name').value);
+  // var address = escape(document.getElementById('address').value);
+  // var type = document.getElementById('type').value;
+  // var latlng = marker.getPosition();
+  // var url = 'phpsqlinfo_addrow.php?name=' + name + '&address=' + address +
+  //           '&type=' + type + '&lat=' + latlng.lat() + '&lng=' + latlng.lng();
 
-  downloadUrl(url, function(data, responseCode) {
+  // downloadUrl(url, function(data, responseCode) {
 
-    console.log(data);
-    if (responseCode == 200 && data.length <= 1) {
-      infowindow.close();
-      messagewindow.open(map, marker);
-    }
-  });
+  //   console.log(data);
+  //   if (responseCode == 200 && data.length <= 1) {
+  //     infowindow.close();
+  //     messagewindow.open(map, marker);
+  //   }
+  // });
+
+  let mapObj = {};
+  let latlng = marker.getPosition();
+
+  mapObj.name = escape(document.getElementById('name').value);
+  mapObj.address = escape(document.getElementById('address').value);
+  mapObj.type = document.getElementById('type').value;
+  mapObj.lat =  latlng.lat();
+  mapObj.long = latlng.lng();
+  mapObj.imgsrc = 'dummy';
+  mapObj.contributorid = 'dummy';
+  mapObj.mapid = 'dummy';
+
+  console.log(mapObj);
+  //return mapObject
 }
 
 function downloadUrl(url, callback) {
