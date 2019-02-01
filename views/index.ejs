@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script 
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGvUWB72E3Dszv0iI8pkFtbLj7BonXvTU&callback=initMap">
+    </script>
     <script type="text/javascript" src="/scripts/initmap.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -58,11 +61,10 @@
     <div class='container'>
       <div class="row">
         <div class="col map-background" style='background-color:#424242'>
-          <!-- 1 of 1 -->
           <div class='col' id="map"></div>
 
-          <!-- form start -->
-          <div id="form">
+            <!-- form start -->
+            <div id="form">
               <table>
               <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
               <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
@@ -76,11 +78,6 @@
               <div id="message">Location saved</div>
               
             </div>
-            <!-- form end -->
-          <script src="/scripts/initmap.js"></script>
-          <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGvUWB72E3Dszv0iI8pkFtbLj7BonXvTU&callback=initMap">
-          </script>
         </div>
       </div>
       <div class='row' id='meta-pane' style='background-color:#424242'>

@@ -1,3 +1,5 @@
+
+
 function saveData() {
   console.log("saving data!");
   var name = escape(document.getElementById('name').value);
@@ -33,7 +35,7 @@ function downloadUrl(url, callback) {
 }
 
 $(() => {
-
+  initMap();
   // $.ajax({
   //   method: "GET",
   //   url: "/api/users"
