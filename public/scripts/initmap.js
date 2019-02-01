@@ -247,6 +247,14 @@ $(() => {
     });
   });
 
+  // $("#test").on('click', () => {
+  //   console.log('hit');
+  // });
+
+  function tester(){
+    console.log('test');
+  }
+
   function saveData() {
     console.log("saving data!");
     var name = escape(document.getElementById('name').value);
