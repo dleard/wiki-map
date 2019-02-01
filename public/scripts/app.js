@@ -1,10 +1,11 @@
 const userid = 1;
 const mapid = 1;
+const markerid = 1;
 
 
 $(() => {
-  /*
   
+  /*
   // GET ALL USERS
   $.ajax({
     method: "GET",
@@ -26,7 +27,7 @@ $(() => {
      // $("<div>").text(user.name).appendTo($("body"));
     }
   });;
-
+  
   // GET ALL MAPS FROM 1 USER
   $.ajax({
     method: "GET",
@@ -46,7 +47,6 @@ $(() => {
       console.log(user);
     // $("<div>").text(user.name).appendTo($("body"));
   });;
-  */
 
   // GET ALL MARKERS FOR 1 MAP
   $.ajax({
@@ -59,4 +59,14 @@ $(() => {
     }
   });;
 
+  // GET 1 MARKER
+  $.ajax({
+    method: "GET",
+    url: `/api/markers/${markerid}`
+  }).done((marker) => {
+      console.log(marker);
+    // $("<div>").text(user.name).appendTo($("body"));
+  });;
+  */
+ 
 });

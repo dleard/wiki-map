@@ -3,10 +3,6 @@
 const express = require('express');
 const router  = express.Router();
 
-
-const userid = 1;
-const mapid = 1;
-
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
@@ -22,7 +18,7 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("users")
-      .where({id: `${userid}`})
+      .where({id: `${req.params.id}`})
       .then((results) => {
         res.json(results[0]);
     });
@@ -33,7 +29,7 @@ module.exports = (knex) => {
       .select("*")
       .from("maps")
       .join('users', 'maps.creatorid', '=', 'users.id')
-      .where({creatorid: 1})
+      .where({creatorid: `${req.params.id}`})
       .then((results) => {
         res.json(results);
     });
