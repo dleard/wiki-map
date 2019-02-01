@@ -36,16 +36,6 @@ function downloadUrl(url, callback) {
 
 $(() => {
   initMap();
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(let user of users) {
-  //     console.log(user);
-  //    // $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });;
-
 
   let testMap = {
     creatorid: 1,
@@ -109,42 +99,54 @@ $(() => {
   // RENDER IMPORT
   //
 
-  function renderTweets(dataObj){
+  function renderMaps(dataObj){
+    console.log(dataObj);
     for (const obj of dataObj) {
       var $map = createMapEntry(obj);
-
-      // Test / driver code (temporary)
+      console.log(obj);
       $('.maplist-container').prepend($map); 
     }   
   }
 
-  $('.maplist-container').prepend(createMapEntry(testMap));
+  //$('.maplist-container').prepend(createMapEntry(testMap));
 
   //
   // RENDER IMPORT END
   //
 
-  // $("#form").on('submit', function(event) {
-  //   event.preventDefault();
-  //   console.log('hit');
+  // MAP AJAX FUNCTIONS
 
-  // });
+  const getAllMaps = () => {
+    $.ajax({
+      method: "GET",
+      url: "/api/maps"
+    }).done((maps) => {
+      for(let map of maps) {
+        console.log('AJAX GET MAPS DONE');
+       // $("<div>").text(user.name).appendTo($("body"));
+      }
+      renderMaps(maps);
+    });;
+  }
 
 
-
+  getAllMaps();
+//  END OF app.js  //
 });
 
-// <article class="maplisting">  
-                
-//                 <img class="logo" src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" width="50px" height="50px">
-//                 <h3>Where to find dilly bars</h3>
-                
-//                 <footer>
-//                   <h4>@DanDangler</h4>
-//                   <h4>Victoria</h4>
-//                   <h4>Food</h4>
-//                 </footer>
-             
-//           </article> 
+/*  EXAMPLE OF HTML FOR MAP BROWSER 
 
+<article class="maplisting">  
+                
+                <img class="logo" src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" width="50px" height="50px">
+                <h3>Where to find dilly bars</h3>
+                
+                <footer>
+                  <h4>@DanDangler</h4>
+                  <h4>Victoria</h4>
+                  <h4>Food</h4>
+                </footer>
+             
+          </article> 
+*/
 

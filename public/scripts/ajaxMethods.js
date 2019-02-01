@@ -2,6 +2,17 @@ const userid = 1;
 const mapid = 1;
 const markerid = 1; 
 
+// GET ALL USERS
+ $.ajax({
+    method: "GET",
+    url: "/api/users"
+  }).done((users) => {
+    for(let user of users) {
+      console.log(user);
+     // $("<div>").text(user.name).appendTo($("body"));
+    }
+  });;
+
 // GET ALL MAPS
 $.ajax({
   method: "GET",
