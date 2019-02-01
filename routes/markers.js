@@ -31,6 +31,7 @@ module.exports = (knex) => {
       .update(edit,changedAttrs)
       .then((results) => {
         console.log(`Values changed: ${results}`);
+        res.sendStatus(200);
     });
   });
 
@@ -38,8 +39,19 @@ module.exports = (knex) => {
     knex("markers")
     .insert(req.body)
     .then((results) => {
-      console.log(results);
-    })
+      console.log(`${results} added`);
+      res.sendStatus(200);
+    });
+  });
+
+  router.delete("/:id", (req, res) => {
+    knex("markers")
+    .where("id", `${req.params.id}`)
+    .del()
+    .then(() => {
+      console.log(`Marker ${req.params.id} deleted`);
+      res.sendStatus(200);
+    });
   });
 
   return router;

@@ -22,7 +22,16 @@ module.exports = (knex) => {
       .where({'maps.id': `${req.params.id}`})
       .then((results) => {
         res.json(results);
-      })
+      });
+  });
+
+  router.post("/", (req, res) => {
+    console.log(req.body);
+    knex("maps")
+      .insert(req.body)
+      .then(() => {
+        res.sendStatus(200);
+      });
   });
 
   return router;
