@@ -35,5 +35,13 @@ module.exports = (knex) => {
     });
   });
 
+  router.post("/:id/favorites", (req, res) => {
+    knex("favorites")
+      .insert(req.body)
+      .then(() => {
+        res.sendStatus(200);
+      });
+  });
+
   return router;
 }
