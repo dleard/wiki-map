@@ -21,6 +21,13 @@ $(() => {
     type: "Custom"
    }
 
+  $("#profile-toggle").click(function(){
+    $('#profile-toggle').slideToggle('slow'); 
+      //toggle( "slide", {direction: 'right'});
+      //animate({width:'toggle'},350);
+  });
+
+
   function createMapEntry(mapObject){
     //do biz
     const article = $('<article>').addClass("maplisting");
