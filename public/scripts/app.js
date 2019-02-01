@@ -47,9 +47,16 @@ $(() => {
     // $("<div>").text(user.name).appendTo($("body"));
   });;
   */
+
+  // GET ALL MARKERS FOR 1 MAP
+  $.ajax({
+    method: "GET",
+    url: `/api/maps/${mapid}`
+  }).done((markers) => {
+    for(let marker of markers) {
+      console.log(marker);
+    // $("<div>").text(user.name).appendTo($("body"));
+    }
+  });;
+
 });
-
-
-// app.GET(‘/user/:id’)
-// 	Select user profile
-// 	TABLE: USER
