@@ -11,6 +11,7 @@ function saveData() {
 
   downloadUrl(url, function(data, responseCode) {
 
+    console.log(data);
     if (responseCode == 200 && data.length <= 1) {
       infowindow.close();
       messagewindow.open(map, marker);
@@ -34,7 +35,11 @@ function downloadUrl(url, callback) {
   request.send(null);
 }
 
+function doNothing () {
+}
+
 $(() => {
+<<<<<<< e0e9d50a011b507618e15544b004a76c15597e0e
   initMap();
   // $.ajax({
   //   method: "GET",
@@ -45,6 +50,18 @@ $(() => {
   //    // $("<div>").text(user.name).appendTo($("body"));
   //   }
   // });;
+=======
+
+  $.ajax({
+    method: "GET",
+    url: "/api/users"
+  }).done((users) => {
+    for(let user of users) {
+      console.log(user);
+     // $("<div>").text(user.name).appendTo($("body"));
+    }
+  });;
+>>>>>>> master update to features/apiwork
 
 
   let testMap = {
