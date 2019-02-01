@@ -1,4 +1,7 @@
-
+function containsEncodedComponents(x) {
+  x.split('%20').join(' ');
+  return x
+}
 
 function saveData() {
   console.log("saving data!");
@@ -21,14 +24,17 @@ function saveData() {
   let mapObj = {};
   let latlng = marker.getPosition();
 
-  mapObj.name = escape(document.getElementById('name').value);
-  mapObj.address = escape(document.getElementById('address').value);
+  mapObj.name = containsEncodedComponents(document.getElementById('name').value);
+  mapObj.address = containsEncodedComponents(document.getElementById('address').value);
   mapObj.type = document.getElementById('type').value;
   mapObj.lat =  latlng.lat();
   mapObj.long = latlng.lng();
   mapObj.imgsrc = 'dummy';
   mapObj.contributorid = 'dummy';
   mapObj.mapid = 'dummy';
+
+  //mapObj.name = escape(document.getElementById('name').containsEncodedComponents(value));
+  //mapObj.address = escape(document.getElementById('address').containsEncodedComponents(value));
 
   console.log(mapObj);
   //return mapObject
@@ -54,21 +60,8 @@ function doNothing () {
 }
 
 $(() => {
-<<<<<<< HEAD
-<<<<<<< e0e9d50a011b507618e15544b004a76c15597e0e
+
   initMap();
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(let user of users) {
-  //     console.log(user);
-  //    // $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });;
-=======
-=======
->>>>>>> 98e12ccc9eabffee74a36a551d696e7c39e878f2
 
   $.ajax({
     method: "GET",
@@ -79,7 +72,7 @@ $(() => {
      // $("<div>").text(user.name).appendTo($("body"));
     }
   });;
->>>>>>> master update to features/apiwork
+
 
 
   let testMap = {
