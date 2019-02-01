@@ -67,6 +67,16 @@ $(() => {
       console.log(marker);
     // $("<div>").text(user.name).appendTo($("body"));
   });;
+
+  // EDIT A MARKER
+  const newMarker = {address: '1234 sucks', name: 'bad place'}
+  $.ajax({
+    method: "PUT",
+    url: `/api/markers/${markerid}`,
+    data: newMarker
+  }).done((marker) => {
+    console.log(marker);
+    // $("<div>").text(user.name).appendTo($("body"));
+  });;
   */
- 
 });
