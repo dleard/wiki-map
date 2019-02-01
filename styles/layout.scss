@@ -14,10 +14,33 @@ body {
   height: 80rem;
 }
 
+#form {
+  position: relative;
+  display: none;
+}
+
 #profile-pane {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   height: inherit;
   background-color: darkslategrey;
 
+}
+
+.map-background{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#profile-toggle {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: inherit;
+  position: relative;
+  left: 15px;
+  padding: 0px 0px 0px 0px;
+  background-color: lightgray;
+  z-index: 2;
 }
 
 .maplisting {
