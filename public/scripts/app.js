@@ -33,6 +33,7 @@ function downloadUrl(url, callback) {
 }
 
 $(() => {
+<<<<<<< HEAD
 
   $.ajax({
     method: "GET",
@@ -44,6 +45,16 @@ $(() => {
     }
   });;
 
+=======
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/api/users"
+  // }).done((users) => {
+  //   for(user of users) {
+  //     $("<div>").text(user.name).appendTo($("body"));
+  //   }
+  // });;
+>>>>>>> 628349f18a817d762a9ef9cf0849d3cc739401ef
 
   let testMap = {
     creatorid: 1,
