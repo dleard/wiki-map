@@ -18,3 +18,38 @@ body h1 {
   height: inherit;
   background-color: darkslategrey;
 }
+
+.maplisting {
+  background-color: lightgray;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin: 0px 0px 1rem 0px;
+  position: relative;
+  color: #244751;
+  height: 6em;
+  align-content: center;
+  z-index: 1;
+  overflow: auto;
+}
+
+.maplisting h3 {
+  top: 2rem;
+  margin: 3rem 0px 0px 1rem;
+  float: left;
+}
+
+.maplisting h4 {
+  float: right;
+  margin: 5rem 5rem 0px 0px;
+}
+
+.maplisting footer {
+  float: right;
+}
+
+.logo {
+  float: left;
+  margin: 1.5rem auto auto 1.5rem;
+  position: relative;
+  border-radius: 10px;
+}
