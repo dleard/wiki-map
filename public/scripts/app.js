@@ -74,13 +74,10 @@ $(() => {
   //   });
   // }
 
-  // function tester(){
-  //   console.log('test');
-  // }
-
   function createMapEntry(mapObject){
     //do biz
     const article = $('<article>').addClass("maplisting");
+    article.data("mapid", mapObject.id);
     
     const avatar = $('<img>').addClass("logo").attr('src', mapObject.avatar).attr('width', '50px').attr('height', '50px').appendTo(article);
     const h3 = $('<h3>').text(mapObject.name).appendTo(article);
@@ -88,10 +85,6 @@ $(() => {
     const h4_1 = $('<h4>').text(mapObject.handle).appendTo(footer);
     const h4_2 = $('<h4>').text(mapObject.city).appendTo(footer);
     const h4_3 = $('<h4>').text(mapObject.type).appendTo(footer);
-    // const report = $('<i>').addClass(`fas fa-flag`).addClass(`tweet-btn`).addClass(`report-btn`).appendTo(footer);
-    // const retweet = $('<i>').addClass(`fas fa-retweet`).addClass(`tweet-btn`).addClass(`retweet-btn`).appendTo(footer);
-    // const like = $('<i>').addClass(`fas fa-heart tweet-btn like-btn`).data( "liked", false ).appendTo(footer);
-    // const likeCount = $('<h3>').text(tweet.likes).data("t-id", tweet.tuid).addClass(`like-count`).appendTo(footer);
     return article
   }
 
@@ -100,12 +93,11 @@ $(() => {
   //
 
   function renderMaps(dataObj){
-    console.log(dataObj);
     for (const obj of dataObj) {
       var $map = createMapEntry(obj);
-      console.log(obj);
       $('.maplist-container').prepend($map); 
     }   
+    attachMapClickListener();
   }
 
   //$('.maplist-container').prepend(createMapEntry(testMap));
@@ -114,21 +106,34 @@ $(() => {
   // RENDER IMPORT END
   //
 
-  // MAP AJAX FUNCTIONS
 
+  // *** MAP AJAX FUNCTIONS ***
+
+  // GET ALL MAPS
   const getAllMaps = () => {
     $.ajax({
       method: "GET",
       url: "/api/maps"
     }).done((maps) => {
-      for(let map of maps) {
-        console.log('AJAX GET MAPS DONE');
-       // $("<div>").text(user.name).appendTo($("body"));
-      }
+      console.log('AJAX GET MAPS DONE');
       renderMaps(maps);
     });;
   }
 
+  // GET 1 MAP AND ALL MARKERS
+  const attachMapClickListener = () => {
+    $('.maplisting').on('click', function() {
+      const {mapid} = $(this).data();
+      $.ajax({
+        method: "GET",
+        url: `/api/maps/${mapid}`
+      }).done((markers) => {
+        console.log('AJAX GET MARKERS DONE');
+        console.log(markers);
+        initMap(markers[0].startlat, markers[0].startlong)
+      });;
+    });
+  }
 
   getAllMaps();
 //  END OF app.js  //

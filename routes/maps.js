@@ -7,7 +7,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     knex
-      .select("*")
+      .select(["maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar"])
       .from("maps")
       .join("users", "users.id", "=", "maps.creatorid")
       .then((results) => {
@@ -17,7 +17,7 @@ module.exports = (knex) => {
 
   router.get("/:id", (req, res) => {
     knex
-      .select("lat", "long")
+      .select("lat", "long", "maps.startlat", "maps.startlong")
       .from("markers")
       .join("maps", "markers.mapid", "=", "maps.id" )
       .where({'maps.id': `${req.params.id}`})
