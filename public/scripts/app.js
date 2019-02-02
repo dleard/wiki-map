@@ -153,15 +153,26 @@ $(() => {
         url: `/api/users/${userId}`,
       }).done((user) => {
         console.log("GET USER DONE")
-        console.log(user);
-        console.log($('#profile-header').find('img'));
         $('#profile-header').find('img')[0].src =`${user.avatar}`; 
-        $('#profile-header').find('h3')[0].innerText =`${user.handle}`; 
-
-
+        $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
+        $('#profile-header').data({id: `${user.id}`});
       }); 
     });
   }
+
+  const attachProfileButtonListeners = () => {
+    $('#profile-body').find('button:nth-of-type(1)').on('click', function() {
+      console.log(`button ONE clicked on user ${$('#profile-header').data().id}'s profile`);
+    });
+    $('#profile-body').find('button:nth-of-type(2)').on('click', function() {
+      console.log(`button TWO clicked on user ${$('#profile-header').data().id}'s profile`);
+    });
+    $('#profile-body').find('button:nth-of-type(3)').on('click', function() {
+      console.log(`button THREE clicked on user ${$('#profile-header').data().id}'s profile`);
+    });
+  }
+
+  attachProfileButtonListeners();
 
   // <div id='profile-header' style = 'text-align = center; padding: 5px 3px 3px 5px'>
   //             <img style = "float: left"src = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" />
