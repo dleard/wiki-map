@@ -171,8 +171,15 @@ $(() => {
         renderMaps(maps);
       });;
     });
+    
     $('#profile-body').find('button:nth-of-type(2)').on('click', function() {
-      console.log(`button TWO clicked on user ${$('#profile-header').data().id}'s profile`);
+      $.ajax({
+        method: "GET",
+        url: `/api/users/${id}/maps/contributed`
+      }).done((maps) => {
+        $('.maplist-container')[0].innerHTML = '';
+        renderMaps(maps);
+      });;
     });
     $('#profile-body').find('button:nth-of-type(3)').on('click', function() {
       console.log(`button THREE clicked on user ${$('#profile-header').data().id}'s profile`);

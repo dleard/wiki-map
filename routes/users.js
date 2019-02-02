@@ -36,6 +36,19 @@ module.exports = (knex) => {
     });
   });
 
+  router.get("/:id/maps/contributed", (req, res) => {
+    knex
+      .select("*")
+      .from("maps")
+      .join('users', 'maps.creatorid', '=', 'users.id')
+      .join('markers', 'maps.id', '=', 'markers.contributorid')
+      .where('markers.contributorid', `${req.params.id}`)
+      .then((results) => {
+        console.log(results);
+        res.json(results);
+    });
+  });
+
   router.post("/:id/favorites", (req, res) => {
     knex("favorites")
       .insert(req.body)
