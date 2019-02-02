@@ -135,7 +135,6 @@ $(() => {
         url: `/api/maps/${mapid}`
       }).done((markers) => {
         console.log('AJAX GET MARKERS DONE');
-        console.log(markers);
         //initMap(markers[0].startlat, markers[0].startlong);
         $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${avatar}></img>${handle}`;
         $('#meta-pane').find('h2')[0].innerHTML = `${title}`;
@@ -156,13 +155,21 @@ $(() => {
         $('#profile-header').find('img')[0].src =`${user.avatar}`; 
         $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
         $('#profile-header').data({id: `${user.id}`});
+        attachProfileButtonListeners();
       }); 
     });
   }
 
   const attachProfileButtonListeners = () => {
+    const {id} = $('#profile-header').data();
     $('#profile-body').find('button:nth-of-type(1)').on('click', function() {
-      console.log(`button ONE clicked on user ${$('#profile-header').data().id}'s profile`);
+      $.ajax({
+        method: "GET",
+        url: `/api/users/${id}/maps`
+      }).done((maps) => {
+        $('.maplist-container')[0].innerHTML = '';
+        renderMaps(maps);
+      });;
     });
     $('#profile-body').find('button:nth-of-type(2)').on('click', function() {
       console.log(`button TWO clicked on user ${$('#profile-header').data().id}'s profile`);
@@ -172,7 +179,12 @@ $(() => {
     });
   }
 
-  attachProfileButtonListeners();
+
+  // X app.GET(‘/user/:id//maps’)
+	// Get a user’s maps
+	// 	Filtering done client-side
+	// TABLE: MAP JOIN USER ON (CREATORID = USER.ID)
+
 
   // <div id='profile-header' style = 'text-align = center; padding: 5px 3px 3px 5px'>
   //             <img style = "float: left"src = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" />
