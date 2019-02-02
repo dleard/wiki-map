@@ -31,6 +31,12 @@ input {
   margin-top: 0.5rem;
 }
 
+.navbar {
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
 #meta-pane {
   height: 10rem;
 }
