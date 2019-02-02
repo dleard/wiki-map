@@ -300,7 +300,6 @@ function initMap() {
 }
 
 function populateMarkers(markersdata){
-  locationwindow = new google.maps.InfoWindow();
   console.log('inside populate');
   
   let markers = [];
@@ -318,9 +317,13 @@ function populateMarkers(markersdata){
     //infowindows[i].open(map, markers[i]);
 
     markers[i].addListener('click', function(event) {
-      console.log('click found!');
-      locationwindow.close(); // Close previously opened infowindow
-      locationwindow.setContent( `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`);
+      console.log('click found!')
+      console.log(event);
+      // messagewindow.close(); // Close previously opened infowindow
+      location = new google.maps.InfoWindow({
+        content: `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`
+      });
+      //messagewindow.setContent( `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`);
       locationwindow.open(map, markers[i]);
       console.log('click ended');
     });

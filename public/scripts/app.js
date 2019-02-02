@@ -140,7 +140,7 @@ function doNothing () {
 // MARKER ADD END
 
 $(() => {
-
+  populateMarkers(testMarkers);
   initMap();
 
   $.ajax({
@@ -228,7 +228,7 @@ $(() => {
 
   $('.maplist-container').prepend(createMapEntry(testMap));
   console.log('calling populate');
-  populateMarkers(testMarkers);
+ 
   //
   // RENDER IMPORT END
   //
