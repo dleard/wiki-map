@@ -50,7 +50,7 @@ function saveData() {
   mapObj.type = document.getElementById('type').value;
   mapObj.lat =  latlng.lat();
   mapObj.long = latlng.lng();
-  mapObj.imgsrc = 'dummy';
+  mapObj.imgsrc = document.getElementById('img-url').value;
   mapObj.contributorid = 'dummy';
   mapObj.mapid = 'dummy';
 
