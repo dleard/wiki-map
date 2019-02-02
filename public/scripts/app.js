@@ -142,21 +142,6 @@ function doNothing () {
 $(() => {
 
   initMap();
-<<<<<<< HEAD
-=======
-
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(let user of users) {
-      //console.log(user);
-     // $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
-
-
->>>>>>> apiwork/bugfix
 
   let testMap = {
     creatorid: 1,
@@ -220,7 +205,6 @@ $(() => {
     attachMapClickListener();
   }
 
-<<<<<<< HEAD
   // *** MAP AJAX FUNCTIONS ***
 
   // GET ALL MAPS - render maps to browser pane
@@ -233,18 +217,6 @@ $(() => {
       renderMaps(maps);
     });;
   }
-=======
-  $('.maplist-container').prepend(createMapEntry(testMap));
-  console.log('calling populate');
-  populateMarkers(testMarkers);
-  //
-  // RENDER IMPORT END
-  //
-
-  // $("#form").on('submit', function(event) {
-  //   event.preventDefault();
-  //   console.log('hit');
->>>>>>> apiwork/bugfix
 
   // GET 1 MAP AND ALL MARKERS - render map to map window
   const attachMapClickListener = () => {
@@ -259,11 +231,11 @@ $(() => {
         url: `/api/maps/${mapid}`
       }).done((markers) => {
         console.log('AJAX GET MARKERS DONE');
-        //initMap(markers[0].startlat, markers[0].startlong);
         $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${avatar}></img>${handle}`;
         $('#meta-pane').find('h2')[0].innerHTML = `${title}`;
         $('#meta-pane').data({id: creatorId});
         attachMetaPaneHandleListener();
+        populateMarkers(markers);
       });;
     });
   }
@@ -317,22 +289,3 @@ $(() => {
   getAllMaps();
 //  END OF app.js  //
 });
-<<<<<<< HEAD
-=======
-
-// <article class="maplisting">  
-                
-//                 <img class="logo" src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" width="50px" height="50px">
-//                 <h3>Where to find dilly bars</h3>
-                
-//                 <footer>
-//                   <h4>@DanDangler</h4>
-//                   <h4>Victoria</h4>
-//                   <h4>Food</h4>
-//                 </footer>
-             
-//           </article> 
-
-
- 
->>>>>>> apiwork/bugfix
