@@ -227,12 +227,12 @@ $(() => {
       const handle = $(this).find('h4')[0].innerText;
       const avatar = $(this).find('img')[0].currentSrc;
       const {mapid, creatorId} = $(this).data();
-      
       $.ajax({
         method: "GET",
         url: `/api/maps/${mapid}`
       }).done((markers) => {
         console.log('AJAX GET MARKERS DONE');
+        console.log(markers);
         $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${avatar}></img>${handle}`;
         $('#meta-pane').find('h2')[0].innerHTML = `${title}`;
         $('#meta-pane').data({id: creatorId});

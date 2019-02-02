@@ -22,6 +22,7 @@ module.exports = (knex) => {
       .join("maps", "markers.mapid", "=", "maps.id" )
       .where({'maps.id': `${req.params.id}`})
       .then((results) => {
+        console.log('results' + results);
         res.json(results);
       });
   });
