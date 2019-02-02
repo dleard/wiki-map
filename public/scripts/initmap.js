@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 function initMap(lat, long) {
+=======
+let map;
+
+function initMap() {
+>>>>>>> apiwork/bugfix
 
     // Create a new StyledMapType object, passing it an array of styles,
     // and the name to be displayed on the map type control.
@@ -214,8 +220,13 @@ function initMap(lat, long) {
 
     // Create a map object, and include the MapTypeId to add
     // to the map type control.
+<<<<<<< HEAD
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: lat || 48.427, lng: long || -123.367},
+=======
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 48.427, lng: -123.367},
+>>>>>>> apiwork/bugfix
       zoom: 13,
       mapTypeControlOptions: {
         mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
@@ -245,14 +256,6 @@ function initMap(lat, long) {
       });
     });
 
-    // $("#test").on('click', () => {
-    //   console.log('hit');
-    // });
-
-    function tester(){
-      console.log('test');
-    }
-
     function saveData() {
       console.log("saving data!");
       var name = escape(document.getElementById('name').value);
@@ -270,6 +273,8 @@ function initMap(lat, long) {
         }
       });
     }
+
+    
 
     function downloadUrl(url, callback) {
       var request = window.ActiveXObject ?
@@ -293,4 +298,26 @@ function initMap(lat, long) {
     //Associate the styled map with the MapTypeId and set it to display.
     map.mapTypes.set('styled_map', styledMapType);
     map.setMapTypeId('styled_map');
+}
+
+function populateMarkers(markersdata){
+  locationwindow = new google.maps.InfoWindow();
+  
+  let markers = [];
+  markersdata[0].forEach(marker => {
+    const markerData = marker;
+    let location = {lat: marker.lat, lng: marker.long};
+    marker = new google.maps.Marker({position: location, map: map});
+    marker.addListener('click', function(event) {
+      console.log('click found!');
+      locationwindow.close(); // Close previously opened infowindow
+      locationwindow.setContent( `<div style='float:left'><img src=${markerData.imgsrc}></div><div style='float:right; padding: 10px;'><b>${markerData.name}</b><br/>${markerData.address}<br/>${markerData.type}</div>`);
+      locationwindow.open(map, marker);
+      console.log(locationwindow);
+      console.log('click ended');
+    });
+    markers.push(marker);
+  });
+  
+  
 }
