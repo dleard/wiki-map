@@ -68,6 +68,7 @@
               <table>
               <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
               <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
+              <tr><td>Image URL:</td> <td><input type='text' id='img-url'/> </td> </tr>
               <tr><td>Type:</td> <td><select id='type'> +
                          <option value='Food' SELECTED>Food</option>
                          <option value='Entertainment'>Entertainment</option>
@@ -76,7 +77,7 @@
                          <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
                          <!-- onclick='saveData()' -->
               </table>
-              <div id="message">Location saved</div>
+              <div style='visibility: hidden' id="message">Location saved</div>
               
             </div>
         </div>
@@ -117,7 +118,7 @@
         </div>
         <div id='profile-pane' class='col-sm-3'>
           <div id='profile-toggle'>
-            <div id='profile-header' style = 'text-align = center; padding: 5px 3px 3px 5px'>
+            <div id='profile-header' style = 'text-align: center; padding: 5px 3px 3px 5px'>
               <img style = "float: left"src = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" />
               <h3>Handle</h3>
             </div>

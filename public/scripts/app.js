@@ -58,6 +58,7 @@ function saveData() {
   //mapObj.address = escape(document.getElementById('address').containsEncodedComponents(value));
 
   console.log(mapObj);
+  $('#message').css('visibility', 'visible');
   //return mapObject
 }
 
