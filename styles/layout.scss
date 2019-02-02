@@ -8,6 +8,11 @@ body {
 
 #meta-pane {
   height: 10rem;
+
+  a, a:visited, a:hover, a:active {
+    color: inherit;
+    cursor: pointer;
+  }
 }
 
 #browser-pane {

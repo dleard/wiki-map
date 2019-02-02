@@ -10,6 +10,11 @@ body h1 {
   height: 10rem;
 }
 
+#meta-pane a, #meta-pane a:visited, #meta-pane a:hover, #meta-pane a:active {
+  color: inherit;
+  cursor: pointer;
+}
+
 #browser-pane {
   height: 80rem;
 }

@@ -56,7 +56,7 @@ $(() => {
       //animate({width:'toggle'},350);
   });
   */
- 
+
   // function saveData() {
   //   console.log("saving data!");
   //   var name = escape(document.getElementById('name').value);
@@ -78,7 +78,8 @@ $(() => {
   function createMapEntry(mapObject){
     //do biz
     const article = $('<article>').addClass("maplisting");
-    article.data("mapid", mapObject.id);
+    article.data("mapid", mapObject.id)
+    .data("creatorId", mapObject.creatorid);
     
     const avatar = $('<img>').addClass("logo").attr('src', mapObject.avatar).attr('width', '50px').attr('height', '50px').appendTo(article);
     const h3 = $('<h3>').text(mapObject.name).appendTo(article);
@@ -127,7 +128,7 @@ $(() => {
       const title = $(this).find('h3')[0].innerText;
       const handle = $(this).find('h4')[0].innerText;
       const avatar = $(this).find('img')[0].currentSrc;
-      const {mapid} = $(this).data();
+      const {mapid, creatorId} = $(this).data();
       
       $.ajax({
         method: "GET",
@@ -135,14 +136,45 @@ $(() => {
       }).done((markers) => {
         console.log('AJAX GET MARKERS DONE');
         console.log(markers);
-        initMap(markers[0].startlat, markers[0].startlong);
+        //initMap(markers[0].startlat, markers[0].startlong);
         $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${avatar}></img>${handle}`;
         $('#meta-pane').find('h2')[0].innerHTML = `${title}`;
-        
+        $('#meta-pane').data({id: creatorId});
+        attachMetaPaneHandleListener();
       });;
     });
   }
 
+  const attachMetaPaneHandleListener = () => {
+    ($('#meta-pane').find('a')).on('click', function() {
+      const userId = $(this).parent().parent().data().id;
+      $.ajax({
+        method: "GET",
+        url: `/api/users/${userId}`,
+      }).done((user) => {
+        console.log("GET USER DONE")
+        console.log(user);
+        console.log($('#profile-header').find('img'));
+        $('#profile-header').find('img')[0].src =`${user.avatar}`; 
+        $('#profile-header').find('h3')[0].innerText =`${user.handle}`; 
+
+
+      }); 
+    });
+  }
+
+  // <div id='profile-header' style = 'text-align = center; padding: 5px 3px 3px 5px'>
+  //             <img style = "float: left"src = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" />
+  //             <h3>Handle</h3>
+  //           </div>
+  //             <div id='profile-body'>
+  //               <div class="btn-group-vertical">
+  //               <button type="button" class="btn btn-primary">Created</button>
+  //               <button type="button" class="btn btn-primary">Contributed To</button>
+  //               <button type="button" class="btn btn-primary">Favorited</button>
+  //             </div>
+  //           </div>
+  
   getAllMaps();
 //  END OF app.js  //
 });
