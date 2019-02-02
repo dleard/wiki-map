@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('name');
     table.string('address');
     table.float('lat', 8, 3);
-    table.float('long,', 8, 3);
+    table.float('long', 8, 3);
     table.string('type');
     table.string('description');
     table.string('imgsrc');
