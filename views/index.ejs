@@ -25,20 +25,7 @@
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
-        #map {
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          height: 600px;
-          width: inherit;
-          margin: 0px auto 0px auto;
-          /* top: 3em; */
-        }
-        /* Optional: Makes the sample page fill the window. */
-        html, body {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-        }
+        
       </style>
   </head>
 
@@ -69,12 +56,19 @@
               <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
               <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
               <tr><td>Image URL:</td> <td><input type='text' id='img-url'/> </td> </tr>
-              <tr><td>Type:</td> <td><select id='type'> +
+              <tr><td>Type:</td> <td><select style='float: right' id='type'> +
                          <option value='Food' SELECTED>Food</option>
                          <option value='Entertainment'>Entertainment</option>
                          <option value='Custom'>Custom</option>
-                         </select> </td></tr>
-                         <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
+                         </select> </td></tr>           
+                         <tr><td></td>
+                          <div style='display: inline-block'> 
+                            <td><input type='button' value='Save' onclick='saveData()'/>
+                            <!-- <input type='button' value='Edit' onclick='doNothing()'/>
+                            <input type='button' value='Save' onclick='doNothing()'/></td> -->
+                            <td></td>
+                         </div>
+                        </tr>
                          <!-- onclick='saveData()' -->
               </table>
               <div style='visibility: hidden' id="message">Location saved</div>

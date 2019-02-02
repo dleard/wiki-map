@@ -1,6 +1,6 @@
 let testMarkers = {
-  0:[
-    {
+
+    0:{
     name: 'Home',
     address: '123 Cool Guy Ln',
     lat: 48.427,
@@ -8,7 +8,7 @@ let testMarkers = {
     type: 'bar',
     imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png'
   },
-    {
+    1:{
       name: 'Home2',
       address: '125 Cool Guy Ln',
       lat: 48.527,
@@ -16,7 +16,7 @@ let testMarkers = {
       type: 'bar',
       imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png' 
     }
-  ]
+  
 };
 
 function containsEncodedComponents(x) {
@@ -79,6 +79,7 @@ function downloadUrl(url, callback) {
 }
 
 function doNothing () {
+  console.log('Nothing done! Wait...shit');
 }
 
 // IMPORT MARKER ADD
@@ -288,5 +289,6 @@ $(() => {
   }
 
   getAllMaps();
+  populateMarkers(testMarkers);
 //  END OF app.js  //
 });
