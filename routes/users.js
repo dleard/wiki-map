@@ -38,7 +38,8 @@ module.exports = (knex) => {
 
   router.get("/:id/maps/contributed", (req, res) => {
     knex
-      .select("maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar")
+      .distinct("maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar")
+      .select()
       .from("maps")
       .join('users', 'maps.creatorid', '=', 'users.id')
       .join('markers', 'maps.id', '=', 'markers.contributorid')
