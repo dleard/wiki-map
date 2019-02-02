@@ -156,6 +156,7 @@ $(() => {
         method: "GET",
         url: `/api/users/${id}/maps/contributed`
       }).done((maps) => {
+        console.log(maps);
         $('.maplist-container')[0].innerHTML = '';
         renderMaps(maps);
       });;
