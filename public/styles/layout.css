@@ -20,26 +20,47 @@ body h1 {
 }
 
 #profile-pane {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
   height: inherit;
   background-color: darkslategrey;
+  padding: 0;
+}
+
+#profile-pane #profile-toggle {
+  border-radius: 10px;
+  height: inherit;
+  position: relative;
+  padding: 0px 0px 0px 0px;
+  background-color: lightgray;
+  z-index: 2;
+}
+
+#profile-pane #profile-toggle #profile-header {
+  height: 75px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: slateblue;
+  border-bottom: 2px;
+  border-bottom-style: solid;
+}
+
+#profile-pane #profile-toggle #profile-header img {
+  float: left;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+#profile-pane #profile-toggle #profile-header h3 {
+  text-align: center;
+}
+
+#profile-pane #profile-toggle #profile-body button {
+  margin: 5px;
 }
 
 .map-background {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-}
-
-#profile-toggle {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  height: inherit;
-  position: relative;
-  left: 15px;
-  padding: 0px 0px 0px 0px;
-  background-color: lightgray;
-  z-index: 2;
 }
 
 .maplisting {

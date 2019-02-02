@@ -49,13 +49,14 @@ $(() => {
     startlong: -123.362,
     type: "Custom"
    }
-
+  /* 
   $("#profile-toggle").click(function(){
     $('#profile-toggle').slideToggle('slow'); 
       //toggle( "slide", {direction: 'right'});
       //animate({width:'toggle'},350);
   });
-
+  */
+ 
   // function saveData() {
   //   console.log("saving data!");
   //   var name = escape(document.getElementById('name').value);
