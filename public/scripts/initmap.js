@@ -247,14 +247,6 @@ function initMap() {
       });
     });
 
-    // $("#test").on('click', () => {
-    //   console.log('hit');
-    // });
-
-    function tester(){
-      console.log('test');
-    }
-
     function saveData() {
       console.log("saving data!");
       var name = escape(document.getElementById('name').value);
@@ -301,49 +293,22 @@ function initMap() {
 
 function populateMarkers(markersdata){
   locationwindow = new google.maps.InfoWindow();
-  console.log('inside populate');
   
   let markers = [];
-  // let infowindows = [];
-  let i = 0;
-  console.log(markersdata[0]);
   markersdata[0].forEach(marker => {
-    console.log(marker);
+    const markerData = marker;
     let location = {lat: marker.lat, lng: marker.long};
-    markers[i] = new google.maps.Marker({position: location, map: map});
-    // infowindows[i] = new google.maps.InfoWindow({
-    //  content: 
-    //});
-    //console.log(infowindows[i]);
-    //infowindows[i].open(map, markers[i]);
-
-    markers[i].addListener('click', function(event) {
+    marker = new google.maps.Marker({position: location, map: map});
+    marker.addListener('click', function(event) {
       console.log('click found!');
       locationwindow.close(); // Close previously opened infowindow
-      locationwindow.setContent( `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`);
-      locationwindow.open(map, markers[i]);
+      locationwindow.setContent( `<div style='float:left'><img src=${markerData.imgsrc}></div><div style='float:right; padding: 10px;'><b>${markerData.name}</b><br/>${markerData.address}<br/>${markerData.type}</div>`);
+      locationwindow.open(map, marker);
+      console.log(locationwindow);
       console.log('click ended');
     });
-
-    // google.maps.event.addListener(markers[i], "click", function () {
-    //   console.log('assign success');
-    //   infowindows[i].open(map, markers[i]);
-      
-    // });
-    i++;
+    markers.push(marker);
   });
-
-
-
   
-  // for (const marker of markersdata) {
-  //   let location = {lat: marker.lat, lng: marker.long};
-  //   markers[i] = new google.maps.Marker({position: location, map: map});
-  //   infowindows[i] = new google.maps.InfoWindow({
-  //     content: `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`
-  //   });
-  //   google.maps.event.addListener(markers[i], "click", function () {
-  //     infowindows[i].open(map, marker);
-  //   });
-  // }
+  
 }
