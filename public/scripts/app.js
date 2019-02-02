@@ -1,3 +1,25 @@
+const login = false;
+
+let testMarkers = {
+
+    0:{
+    name: 'Home',
+    address: '123 Cool Guy Ln',
+    lat: 48.427,
+    long: -123.367,
+    type: 'bar',
+    imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png'
+  },
+    1:{
+      name: 'Home2',
+      address: '125 Cool Guy Ln',
+      lat: 48.527,
+      long: -123.467,
+      type: 'bar',
+      imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png' 
+    }
+  
+};
 
 function containsEncodedComponents(x) {
   x.split('%20').join(' ');
