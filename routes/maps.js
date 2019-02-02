@@ -17,7 +17,7 @@ module.exports = (knex) => {
 
   router.get("/:id", (req, res) => {
     knex
-      .select("lat", "long", "maps.startlat", "maps.startlong")
+      .select("markers.name", "address", "markers.type", "lat", "long", "contributorid", "mapid", "maps.startlat", "maps.startlong")
       .from("markers")
       .join("maps", "markers.mapid", "=", "maps.id" )
       .where({'maps.id': `${req.params.id}`})
