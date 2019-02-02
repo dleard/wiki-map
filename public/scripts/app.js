@@ -38,6 +38,28 @@ $(() => {
 
   initMap();
 
+  if (!login) {
+    console.log("NOT LOGGED IN");
+  }
+
+  
+  $('#toggle-profile-panel').on('click', () => {
+    $('#profile-toggle').slideToggle('slow', () => {});
+  });
+  
+  let testMap = {
+    creatorid: 1,
+    handle: "DemoDan",
+    imgsrc: "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+    id: 1,
+    likes: 5,
+    city: 'Victoria',
+    name: "Places I Hate",
+    startlat: 48.422,
+    startlong: -123.362,
+    type: "Custom"
+   }
+ 
   function createMapEntry(mapObject){
     //do biz
     const article = $('<article>').addClass("maplisting");

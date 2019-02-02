@@ -37,6 +37,11 @@ input {
   z-index: 100;
 }
 
+.collapse {
+  height: auto;
+  width: auto;
+}
+
 #meta-pane {
   height: 10rem;
 }
