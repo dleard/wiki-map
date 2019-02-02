@@ -123,14 +123,21 @@ $(() => {
   // GET 1 MAP AND ALL MARKERS
   const attachMapClickListener = () => {
     $('.maplisting').on('click', function() {
+      const title = $(this).find('h3')[0].innerText;
+      const handle = $(this).find('h4')[0].innerText;
+      const avatar = $(this).find('img')[0].currentSrc;
       const {mapid} = $(this).data();
+      
       $.ajax({
         method: "GET",
         url: `/api/maps/${mapid}`
       }).done((markers) => {
         console.log('AJAX GET MARKERS DONE');
         console.log(markers);
-        initMap(markers[0].startlat, markers[0].startlong)
+        initMap(markers[0].startlat, markers[0].startlong);
+        $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${avatar}></img>${handle}`;
+        $('#meta-pane').find('h2')[0].innerHTML = `${title}`;
+        
       });;
     });
   }
