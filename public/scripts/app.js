@@ -1,3 +1,24 @@
+let testMarkers = {
+  0:[
+    {
+    name: 'Home',
+    address: '123 Cool Guy Ln',
+    lat: 48.427,
+    long: -123.367,
+    type: 'bar',
+    imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png'
+  },
+    {
+      name: 'Home2',
+      address: '125 Cool Guy Ln',
+      lat: 48.527,
+      long: -123.467,
+      type: 'bar',
+      imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png' 
+    }
+  ]
+};
+
 function containsEncodedComponents(x) {
   x.split('%20').join(' ');
   return x
@@ -58,6 +79,65 @@ function downloadUrl(url, callback) {
 
 function doNothing () {
 }
+
+// IMPORT MARKER ADD
+
+// function populateMarkers(markersdata){
+//   console.log('inside populate');
+//   let markers = [];
+//   let infowindows = [];
+//   let i = 0;
+//   markersdata[0].forEach(marker => {
+//     let location = {lat: marker.lat, lng: marker.long};
+//     markers[i] = new google.maps.Marker({position: location, map: map});
+//     infowindows[i] = new google.maps.InfoWindow({
+//       content: `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`
+//     });
+//     google.maps.event.addListener(markers[i], "click", function () {
+//       infowindows[i].open(map, marker);
+//     });
+//   });
+//   // for (const marker of markersdata) {
+//   //   let location = {lat: marker.lat, lng: marker.long};
+//   //   markers[i] = new google.maps.Marker({position: location, map: map});
+//   //   infowindows[i] = new google.maps.InfoWindow({
+//   //     content: `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`
+//   //   });
+//   //   google.maps.event.addListener(markers[i], "click", function () {
+//   //     infowindows[i].open(map, marker);
+//   //   });
+//   // }
+// }
+
+// let markers = [];
+// let infowindows = [];
+// for (var i = 0; i < coords.length; ++i) {
+//     markers[i] = "some stuff";
+    
+// }
+
+// function initMap() {
+//   // The location of Uluru
+//   var uluru = {lat: -25.344, lng: 131.036};
+//   // The map, centered at Uluru
+//   var map = new google.maps.Map(
+//       document.getElementById('map'), {zoom: 4, center: uluru});
+//   // The marker, positioned at Uluru
+//   var marker = new google.maps.Marker({position: uluru, map: map});
+// }
+
+// marker = new google.maps.Marker({
+//   map: map,
+//   position: new google.maps.LatLng(18.5231, -72.2929),
+//   icon: "img/mapmarker.png"
+// });
+// infowindow = new google.maps.InfoWindow({
+//   content: "<div style='float:left'><img src='http://i.stack.imgur.com/g672i.png'></div><div style='float:right; padding: 10px;'><b>Title</b><br/>123 Address<br/> City,Country</div>"
+// });
+// google.maps.event.addListener(marker, "click", function () {
+//   infowindow.open(map, marker);
+// });
+// MARKER ADD END
 
 $(() => {
 
@@ -147,7 +227,8 @@ $(() => {
   }
 
   $('.maplist-container').prepend(createMapEntry(testMap));
-
+  console.log('calling populate');
+  populateMarkers(testMarkers);
   //
   // RENDER IMPORT END
   //

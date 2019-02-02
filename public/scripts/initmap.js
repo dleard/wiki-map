@@ -1,3 +1,5 @@
+let map;
+
 function initMap() {
 
     // Create a new StyledMapType object, passing it an array of styles,
@@ -214,7 +216,7 @@ function initMap() {
 
     // Create a map object, and include the MapTypeId to add
     // to the map type control.
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 48.427, lng: -123.367},
       zoom: 13,
       mapTypeControlOptions: {
@@ -271,6 +273,8 @@ function initMap() {
       });
     }
 
+    
+
     function downloadUrl(url, callback) {
       var request = window.ActiveXObject ?
           new ActiveXObject('Microsoft.XMLHTTP') :
@@ -293,4 +297,53 @@ function initMap() {
     //Associate the styled map with the MapTypeId and set it to display.
     map.mapTypes.set('styled_map', styledMapType);
     map.setMapTypeId('styled_map');
+}
+
+function populateMarkers(markersdata){
+  locationwindow = new google.maps.InfoWindow();
+  console.log('inside populate');
+  
+  let markers = [];
+  // let infowindows = [];
+  let i = 0;
+  console.log(markersdata[0]);
+  markersdata[0].forEach(marker => {
+    console.log(marker);
+    let location = {lat: marker.lat, lng: marker.long};
+    markers[i] = new google.maps.Marker({position: location, map: map});
+    // infowindows[i] = new google.maps.InfoWindow({
+    //  content: 
+    //});
+    //console.log(infowindows[i]);
+    //infowindows[i].open(map, markers[i]);
+
+    markers[i].addListener('click', function(event) {
+      console.log('click found!');
+      locationwindow.close(); // Close previously opened infowindow
+      locationwindow.setContent( `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`);
+      locationwindow.open(map, markers[i]);
+      console.log('click ended');
+    });
+
+    // google.maps.event.addListener(markers[i], "click", function () {
+    //   console.log('assign success');
+    //   infowindows[i].open(map, markers[i]);
+      
+    // });
+    i++;
+  });
+
+
+
+  
+  // for (const marker of markersdata) {
+  //   let location = {lat: marker.lat, lng: marker.long};
+  //   markers[i] = new google.maps.Marker({position: location, map: map});
+  //   infowindows[i] = new google.maps.InfoWindow({
+  //     content: `<div style='float:left'><img src=${marker.imgsrc}></div><div style='float:right; padding: 10px;'><b>${marker.name}</b><br/>${marker.address}<br/>${marker.type}</div>`
+  //   });
+  //   google.maps.event.addListener(markers[i], "click", function () {
+  //     infowindows[i].open(map, marker);
+  //   });
+  // }
 }
