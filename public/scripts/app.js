@@ -90,10 +90,7 @@ $(() => {
     return article
   }
 
-  //
-  // RENDER IMPORT
-  //
-
+  // Render maps to browser pane
   function renderMaps(dataObj){
     for (const obj of dataObj) {
       var $map = createMapEntry(obj);
@@ -102,16 +99,9 @@ $(() => {
     attachMapClickListener();
   }
 
-  //$('.maplist-container').prepend(createMapEntry(testMap));
-
-  //
-  // RENDER IMPORT END
-  //
-
-
   // *** MAP AJAX FUNCTIONS ***
 
-  // GET ALL MAPS
+  // GET ALL MAPS - render maps to browser pane
   const getAllMaps = () => {
     $.ajax({
       method: "GET",
@@ -122,7 +112,7 @@ $(() => {
     });;
   }
 
-  // GET 1 MAP AND ALL MARKERS
+  // GET 1 MAP AND ALL MARKERS - render map to map window
   const attachMapClickListener = () => {
     $('.maplisting').on('click', function() {
       const title = $(this).find('h3')[0].innerText;
@@ -144,6 +134,9 @@ $(() => {
     });
   }
 
+  // *** USER AJAX FUNCTIONS ***
+
+  // GET A USER - render details to profile pane
   const attachMetaPaneHandleListener = () => {
     ($('#meta-pane').find('a')).on('click', function() {
       const userId = $(this).parent().parent().data().id;
@@ -160,6 +153,7 @@ $(() => {
     });
   }
 
+  // GET A USER'S MAPS - render maps to browser pane
   const attachProfileButtonListeners = () => {
     const {id} = $('#profile-header').data();
     $('#profile-body').find('button:nth-of-type(1)').on('click', function() {
@@ -186,42 +180,6 @@ $(() => {
     });
   }
 
-
-  // X app.GET(‘/user/:id//maps’)
-	// Get a user’s maps
-	// 	Filtering done client-side
-	// TABLE: MAP JOIN USER ON (CREATORID = USER.ID)
-
-
-  // <div id='profile-header' style = 'text-align = center; padding: 5px 3px 3px 5px'>
-  //             <img style = "float: left"src = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" />
-  //             <h3>Handle</h3>
-  //           </div>
-  //             <div id='profile-body'>
-  //               <div class="btn-group-vertical">
-  //               <button type="button" class="btn btn-primary">Created</button>
-  //               <button type="button" class="btn btn-primary">Contributed To</button>
-  //               <button type="button" class="btn btn-primary">Favorited</button>
-  //             </div>
-  //           </div>
-  
   getAllMaps();
 //  END OF app.js  //
 });
-
-/*  EXAMPLE OF HTML FOR MAP BROWSER 
-
-<article class="maplisting">  
-                
-                <img class="logo" src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" width="50px" height="50px">
-                <h3>Where to find dilly bars</h3>
-                
-                <footer>
-                  <h4>@DanDangler</h4>
-                  <h4>Victoria</h4>
-                  <h4>Food</h4>
-                </footer>
-             
-          </article> 
-*/
-
