@@ -151,13 +151,6 @@ $(() => {
       });;
     });
 
-    const myPromise = new Promise((resolve, reject) => {
-      if (Math.random() * 100 <= 90) {
-          resolve('Hello, Promises!');
-      }
-      reject(new Error('In 10% of the cases, I fail. Miserably.'));
-  });
-
     function getCityGeoLocation(city) {
       return new Promise ((resolve, reject) => {
         var geocoder =  new google.maps.Geocoder();
@@ -186,16 +179,26 @@ $(() => {
           newMapObj.startlat = latLng[0];
           newMapObj.startlong = latLng[1];
           console.log(newMapObj);
-          // $.ajax({
-          //   method: "POST",
-          //   url: '/api/maps',
-          //   data: newMapObj
-          // }).done (() => {
-          //   console.log(`new map with name: ${newMapObj.name} added`);
-          // }); 
+          $.ajax({
+            method: "POST",
+            url: '/api/maps',
+            data: newMapObj
+          }).done ((result) => {
+            $.ajax({
+              method: "GET",
+              url: `/api/maps/${result}`
+            }).done((markers) => {
+              console.log('AJAX GET MARKERS DONE');
+              console.log(markers);
+              $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${$('#profile-header').find('img')[0].src}></img>${$('#profile-header').find('h3')[0].innerText}`;
+              $('#meta-pane').find('h2')[0].innerHTML = `${newMapObj.name}`;
+              $('#meta-pane').data({id: newMapObj.creatorid, mapid: result});
+              attachMetaPaneHandleListener();
+              populateMarkers(markers);
+            });;
+          }); 
         }
       )
-      
     });
   }
 

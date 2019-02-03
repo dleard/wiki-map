@@ -30,9 +30,10 @@ module.exports = (knex) => {
   router.post("/", (req, res) => {
     console.log(req.body);
     knex("maps")
+      .returning('id')
       .insert(req.body)
-      .then(() => {
-        res.sendStatus(200);
+      .then((results) => {
+        res.json(results[0]);
       });
   });
 
