@@ -74,6 +74,30 @@ $(() => {
     $('#create-map-form').css('visibility', 'visible');
   });
   
+  // BROWSER FILTER BUTTONS
+
+  $('#filter-buttons').find('button:nth-of-type(1)').on('click', function(event) {
+    event.preventDefault();
+    $('.maplist-container')[0].innerHTML = '';
+    getAllMaps();
+  });
+  $('#filter-buttons').find('button:nth-of-type(2)').on('click', function(event) {
+    event.preventDefault();
+    getFilteredMaps('food');
+  });  
+  $('#filter-buttons').find('button:nth-of-type(3)').on('click', function(event) {
+    event.preventDefault();
+    getFilteredMaps('entertainment');
+  });  
+  $('#filter-buttons').find('button:nth-of-type(4)').on('click', function(event) {
+    event.preventDefault();
+    getFilteredMaps('nature');
+  });  
+  $('#filter-buttons').find('button:nth-of-type(5)').on('click', function(event) {
+    event.preventDefault();
+    getFilteredMaps('custom');
+  });  
+
   //initialize window
   $('#login-pane').slideUp(`fast`, function(){
     $(this).css("visibility", "visible");
@@ -131,6 +155,18 @@ $(() => {
       url: "/api/maps"
     }).done((maps) => {
       console.log('AJAX GET MAPS DONE');
+      renderMaps(maps);
+    });;
+  }
+
+  // GET FILTERED MAPS - render maps to browser pane
+  const getFilteredMaps = (filter) => {
+    $.ajax({
+      method: "GET",
+      url: `/api/maps/filter/${filter}`
+    }).done((maps) => {
+      console.log('AJAX GET FILTERED MAPS DONE');
+      $('.maplist-container')[0].innerHTML = '';
       renderMaps(maps);
     });;
   }

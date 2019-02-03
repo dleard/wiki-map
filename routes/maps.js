@@ -15,6 +15,17 @@ module.exports = (knex) => {
     });
   });
 
+  router.get("/filter/:filter", (req, res) => {
+    knex
+      .select(["maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar"])
+      .from("maps")
+      .join("users", "users.id", "=", "maps.creatorid")
+      .where('maps.type', `${req.params.filter}`)
+      .then((results) => {
+        res.json(results);
+    });
+  });
+
   router.get("/:id", (req, res) => {
     knex
       .select("markers.name", "address", "markers.type", "lat", "long", "imgsrc", "contributorid", "mapid", "maps.startlat", "maps.startlong")
