@@ -148,6 +148,14 @@ $(() => {
         $('#meta-pane').data({id: creatorId, mapid});
         attachMetaPaneHandleListener();
         populateMarkers(markers);
+        if (markers.length === 0) {
+          $.ajax({
+          method: "GET",
+          url: `/api/maps/map/${mapid}`
+          }).done((maps) => {
+            initMap(maps[0].startlat, maps[0].startlong);
+          })
+        }
       });;
     });
 
@@ -178,7 +186,6 @@ $(() => {
         latLng => {
           newMapObj.startlat = latLng[0];
           newMapObj.startlong = latLng[1];
-          console.log(newMapObj);
           $.ajax({
             method: "POST",
             url: '/api/maps',
@@ -189,12 +196,13 @@ $(() => {
               url: `/api/maps/${result}`
             }).done((markers) => {
               console.log('AJAX GET MARKERS DONE');
-              console.log(markers);
               $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${$('#profile-header').find('img')[0].src}></img>${$('#profile-header').find('h3')[0].innerText}`;
               $('#meta-pane').find('h2')[0].innerHTML = `${newMapObj.name}`;
               $('#meta-pane').data({id: newMapObj.creatorid, mapid: result});
               attachMetaPaneHandleListener();
               populateMarkers(markers);
+              initMap(newMapObj.startlat, newMapObj.startlong);
+              $('#create-map-form').css('visibility', 'hidden');
             });;
           }); 
         }
