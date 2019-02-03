@@ -6,37 +6,28 @@ function containsEncodedComponents(x) {
 
 function saveData() {
   console.log("saving data!");
-  let mapObj = {};
+  let markerObj = {};
   let latlng = marker.getPosition();
 
-  mapObj.name = containsEncodedComponents(document.getElementById('name').value);
-  mapObj.address = containsEncodedComponents(document.getElementById('address').value);
-  mapObj.type = document.getElementById('type').value;
-  mapObj.lat =  latlng.lat();
-  mapObj.long = latlng.lng();
-  mapObj.imgsrc = document.getElementById('img-url').value;
-  mapObj.contributorid = 'dummy';
-  mapObj.mapid = 'dummy';
+  markerObj.name = containsEncodedComponents(document.getElementById('name').value);
+  markerObj.address = containsEncodedComponents(document.getElementById('address').value);
+  markerObj.type = document.getElementById('type').value;
+  markerObj.description = document.getElementById('description').value;
+  markerObj.lat =  latlng.lat();
+  markerObj.long = latlng.lng();
+  markerObj.imgsrc = document.getElementById('imgsrc').value;
+  markerObj.contributorid = $('#meta-pane').data().id;
+  markerObj.mapid = $('#meta-pane').data().mapid;
 
-
-  console.log(mapObj);
   $('#message').css('visibility', 'visible');
-}
 
-function downloadUrl(url, callback) {
-  var request = window.ActiveXObject ?
-      new ActiveXObject('Microsoft.XMLHTTP') :
-      new XMLHttpRequest;
-
-  request.onreadystatechange = function() {
-    if (request.readyState == 4) {
-      request.onreadystatechange = doNothing;
-      callback(request.responseText, request.status);
-    }
-  };
-
-  request.open('GET', url, true);
-  request.send(null);
+  $.ajax({
+    method: "POST",
+    url: '/api/markers',
+    data: markerObj
+  }).done (() => {
+    console.log(`Marker with name: ${markerObj.name} added`);
+  });
 }
 
 function doNothing () {
@@ -46,19 +37,6 @@ function doNothing () {
 $(() => {
 
   initMap();
-
-  let testMap = {
-    creatorid: 1,
-    handle: "DemoDan",
-    imgsrc: "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-    id: 1,
-    likes: 5,
-    city: 'Victoria',
-    name: "Places I Hate",
-    startlat: 48.422,
-    startlong: -123.362,
-    type: "Custom"
-   }
 
   function createMapEntry(mapObject){
     //do biz
@@ -112,7 +90,7 @@ $(() => {
         console.log(markers);
         $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${avatar}></img>${handle}`;
         $('#meta-pane').find('h2')[0].innerHTML = `${title}`;
-        $('#meta-pane').data({id: creatorId});
+        $('#meta-pane').data({id: creatorId, mapid});
         attachMetaPaneHandleListener();
         populateMarkers(markers);
       });;

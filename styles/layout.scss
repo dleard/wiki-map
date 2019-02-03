@@ -52,6 +52,15 @@ input {
 #form {
   position: relative;
   display: none;
+
+  .form-control {
+    margin: 3px;
+    
+    #description {
+      height: 20px;
+    }
+  }
+  
 }
 
 #profile-pane {

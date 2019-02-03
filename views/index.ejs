@@ -55,10 +55,12 @@
               <table>
               <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
               <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
-              <tr><td>Image URL:</td> <td><input type='text' id='img-url'/> </td> </tr>
+              <tr><td>Description:</td> <td><input type='text' id='description'/> </td> </tr>
+              <tr><td>Image URL:</td> <td><input type='text' id='imgsrc'/> </td> </tr>
               <tr><td>Type:</td> <td><select style='float: right' id='type'> +
                          <option value='Food' SELECTED>Food</option>
                          <option value='Entertainment'>Entertainment</option>
+                         <option value='Entertainment'>Nature</option>
                          <option value='Custom'>Custom</option>
                          </select> </td></tr>           
                          <tr><td></td>
@@ -69,11 +71,15 @@
                             <td></td>
                          </div>
                         </tr>
-                         <!-- onclick='saveData()' -->
+                         <!-- onclick='saveData()'--> 
               </table>
               <div style='visibility: hidden' id="message">Location saved</div>
               
             </div>
+            
+
+
+
         </div>
       </div>
       <div class='row' id='meta-pane' style='background-color:#424242'>

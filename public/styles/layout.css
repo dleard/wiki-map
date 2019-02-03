@@ -55,6 +55,14 @@ input {
   display: none;
 }
 
+#form .form-control {
+  margin: 3px;
+}
+
+#form .form-control #description {
+  height: 20px;
+}
+
 #profile-pane {
   border-radius: 10px;
   height: inherit;
