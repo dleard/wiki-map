@@ -86,6 +86,7 @@ input {
 }
 
 #browser-pane {
+  overflow: scroll;
   height: 80rem;
 }
 
@@ -105,7 +106,7 @@ input {
 
 #profile-pane {
   border-radius: 10px;
-  height: inherit;
+  height: 90%;
   padding:0;
   
   #profile-toggle {
