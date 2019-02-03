@@ -59,7 +59,7 @@ app.post("/login", (req, res) => {
       .from("users")
       .where('id', 2)
       .then((results) => {
-        res.json(results);
+        res.json(results[0]);
   });
 });
 

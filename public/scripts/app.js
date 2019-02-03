@@ -161,9 +161,9 @@ $(() => {
         url: `/api/users/${userId}`,
       }).done((user) => {
         $('#profile-header').find('img')[0].src =`${user.avatar}`; 
-    $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
-    $('#profile-header').data({id: `${user.id}`});
-    attachProfileButtonListeners();
+        $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
+        $('#profile-header').data({id: `${user.id}`});
+        attachProfileButtonListeners();
         console.log("GET USER DONE")        
       }); 
     });
@@ -178,20 +178,19 @@ $(() => {
       method: "POST",
       url: "/login",
     }).done(function(user) {
-      console.log(user);
-      //get profile
       siteUser = user;
-      console.log(user);
-    $('#profile-header').find('img')[0].src =`${user.avatar}`; 
-    $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
-    $('#profile-header').data({id: `${user.id}`});
-    attachProfileButtonListeners();
+      $('#profile-header').find('img')[0].src =`${user.avatar}`; 
+      $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
+      $('#profile-header').data({id: `${user.id}`});
+      attachProfileButtonListeners();
     });
   });
 
   // GET A USER'S MAPS - render maps to browser pane
   const attachProfileButtonListeners = () => {
     const {id} = $('#profile-header').data();
+    if (id == siteUser.id) { $('#newMap').css('visibility', 'visible') }
+
     $('#profile-body').find('button:nth-of-type(1)').on('click', function() {
       $.ajax({
         method: "GET",
@@ -215,7 +214,6 @@ $(() => {
     $('#profile-body').find('button:nth-of-type(3)').on('click', function() {
       console.log(`button THREE clicked on user ${$('#profile-header').data().id}'s profile`);
     });
-    console.log('made it here');
   }
 
   getAllMaps();
