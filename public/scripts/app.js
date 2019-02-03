@@ -36,8 +36,33 @@ function deleteLocationData() {
   console.log('delete buttoned!');
 }
 
-function editLocationData() {
-  console.log('edit buttoned!');
+function editLocationData(value) {
+  console.log($('.location-info'));
+  let input = value;
+  let values = input.split('$');
+  console.log(values[1]);
+  let editObj = {};
+  editObj.id = values[1];
+  if (values[0] === 'edit') {
+    $.ajax({
+      method: "PUT",
+      url: `/api/markers/${values[1]}`,
+      data: editObj
+    }).done(() => {
+      console.log(`${editMarker} changed`);
+      // $("<div>").text(user.name).appendTo($("body"));
+    });;
+  }
+  if (values[0] === 'delete') {
+    $.ajax({
+      method: "DELETE",
+      url: `/api/markers/${values[1]}`,
+      data: editObj
+    }).done(() => {
+      console.log(`${editMarker} changed`);
+      // $("<div>").text(user.name).appendTo($("body"));
+    });;
+  }
 }
 
 function doNothing () {

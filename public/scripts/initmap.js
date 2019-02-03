@@ -256,13 +256,24 @@ function populateMarkers(markersdata){
   locationwindow = new google.maps.InfoWindow();
   let markers = [];
     for (key in markersdata) {
-    const markerData = markersdata[key];
-    let location = {lat: markerData.lat, lng: markerData.long};
-    const marker = new google.maps.Marker({position: location, map: map});
-    marker.addListener('click', function(event) {
-      locationwindow.close(); // Close previously opened infowindow
-      locationwindow.setContent( `<div class='location-info'><div style='float:left'><img style='width:120px' src=${markerData.imgsrc}></div><div style='float:right; padding: 10px;'><p><b>${markerData.name}</b></p><br/><p>Address:<br/>${markerData.address}</p><br/><p>Location Type: ${markerData.type}</p><input id='edit-btn' type='button' onclick='editLocationData()' value='Edit'/><input id='delete-btn' type='button' onclick='deleteLocationData()' value='Delete'/></td></div></div>`);
-      locationwindow.open(map, marker);
+      markersdata[key].editPara = 'edit$' + markersdata[key].id;
+      markersdata[key].deletePara = 'delete$' + markersdata[key].id;
+      const markerData = markersdata[key];
+      let location = {lat: markerData.lat, lng: markerData.long};
+      const marker = new google.maps.Marker({position: location, map: map});
+      marker.addListener('click', function(event) {
+        let editPara = '';
+        editPara += 'edit$' + markerData.markerid;
+        let deletePara = '';
+        deletePara += 'delete$' + markerData.markerid;
+        locationwindow.close(); // Close previously opened infowindow
+        locationwindow.setContent( `<div class='location-info'><div style='float:left'>
+        <img style='width:120px' src=${markerData.imgsrc}></div><div style='float:right; padding: 10px;'>
+        <p><b>${markerData.name}</b></p><br/><p>Address:<br/>${markerData.address}</p><br/>
+        <p>Location Type: ${markerData.type}</p>
+        <input id='edit-btn' type='button' onclick="editLocationData('${markerData.editPara}')" value='Edit'/>
+        <input id='delete-btn' type='button' onclick="editLocationData('${markerData.deletePara}')" value='Delete'/></td></div></div>`);
+        locationwindow.open(map, marker);
       
     });
     markers.push(marker);
