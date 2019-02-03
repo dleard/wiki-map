@@ -261,7 +261,8 @@ function populateMarkers(markersdata){
     const marker = new google.maps.Marker({position: location, map: map});
     marker.addListener('click', function(event) {
       locationwindow.close(); // Close previously opened infowindow
-      locationwindow.setContent( `<div style='float:left'><img style="height: 70px; width: 120px"src=${markerData.imgsrc}></div><div style='float:right; padding: 10px;'><b>${markerData.name}</b><br/>${markerData.address}<br/>${markerData.type}</div>`);
+      locationwindow.setContent( `<div class='location-info'><div style='float:left'><img src=${markerData.imgsrc}></div><div style='float:right; padding: 10px;'><p><b>${markerData.name}</b></p><br/><p>Address:<br/>${markerData.address}</p><br/><p>Location Type: ${markerData.type}</p><input type='button' value='Edit' onclick='doNothing()'/>
+      <input type='button' value='Save' onclick='doNothing()'/></td></div></div>`);
       locationwindow.open(map, marker);
     });
     markers.push(marker);

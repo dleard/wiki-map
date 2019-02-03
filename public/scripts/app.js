@@ -7,15 +7,15 @@ let testMarkers = {
     address: '123 Cool Guy Ln',
     lat: 48.427,
     long: -123.367,
-    type: 'bar',
+    type: 'Bar',
     imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png'
   },
     1:{
       name: 'Home2',
       address: '125 Cool Guy Ln',
-      lat: 48.527,
-      long: -123.467,
-      type: 'bar',
+      lat: 48.437,
+      long: -123.357,
+      type: 'Bar',
       imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png' 
     }
   
@@ -64,7 +64,20 @@ $(() => {
     console.log("NOT LOGGED IN");
   }
 
-  
+  //initialize window
+  $('#login-pane').slideUp(`fast`, function(){
+    $(this).css("visibility", "visible");
+  });
+
+  $('.submit-button').on('click', () => {
+    $('#profile-toggle').slideToggle('slow', () => {});
+  });
+
+  $('#login-btn').on('click', () => {
+    console.log('login pressed!');
+    $('#login-pane').slideToggle('slow', () => {});
+  });
+
   $('#toggle-profile-panel').on('click', () => {
     $('#profile-toggle').slideToggle('slow', () => {});
   });

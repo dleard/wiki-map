@@ -7,6 +7,7 @@ const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
+const cookieParser = require('cookie-parser')
 const app         = express();
 
 const knexConfig  = require("./knexfile");
@@ -27,6 +28,9 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+
+// Cookie Parser
+app.use(cookieParser())
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -49,7 +53,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  res.redirect("/index");
+  console.log(req);
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
