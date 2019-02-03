@@ -54,7 +54,13 @@ app.get("/", (req, res) => {
 
 app.post("/login", (req, res) => {
   console.log(req);
-  res.redirect("/");
+  knex
+      .select('*')
+      .from("users")
+      .where('id', 2)
+      .then((results) => {
+        res.json(results);
+  });
 });
 
 app.listen(PORT, () => {

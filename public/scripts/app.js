@@ -69,13 +69,24 @@ $(() => {
     $(this).css("visibility", "visible");
   });
 
-  $('.submit-button').on('click', () => {
-    $('#profile-toggle').slideToggle('slow', () => {});
+  $('.submit-button').on('click', function(event) {
+    event.preventDefault();
+    document.cookie = "handle=DemoDan";
+    $('#login-pane').slideUp(`fast`);
+    $.ajax({
+      method: "POST",
+      url: "/login",
+    }).done(function(user) {
+      console.log(user);
+     //get profile
+
+    });
   });
 
   $('#login-btn').on('click', () => {
     console.log('login pressed!');
     $('#login-pane').slideToggle('slow', () => {});
+    
   });
 
   $('#toggle-profile-panel').on('click', () => {
