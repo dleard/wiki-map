@@ -20,19 +20,21 @@ module.exports = (knex) => {
   });
 
   router.put("/:id", (req, res) => {
+    console.log('body:' + req.body);
     const edit = {};
     for (let key in req.body) {
       edit[key] = req.body[key];
+      console.log(edit[key]);
     }
     const changedAttrs = Object.keys(req.body);
     console.log(edit);
-    knex("markers")
-      .where({id: `${req.params.id}`})
-      .update(edit,changedAttrs)
-      .then((results) => {
-        console.log(`Values changed: ${results}`);
-        res.sendStatus(200);
-    });
+    // knex("markers")
+    //   .where({id: `${req.params.id}`})
+    //   .update(edit,changedAttrs)
+    //   .then((results) => {
+    //     console.log(`Values changed: ${results}`);
+    //     res.sendStatus(200);
+    // });
   });
 
   router.post("/", (req, res) => {
