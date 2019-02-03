@@ -37,8 +37,8 @@ function doNothing () {
 }
 
 $(() => {
-  let siteUser;
-
+  let siteUser=1;
+  
   initMap();
 
   if (siteUser) {
@@ -59,11 +59,10 @@ $(() => {
     attachProfileButtonListeners();
   }
 
-  //$('#my-profile').on('click', () => {
-    //console.log(siteUser);
-    //displayUser(siteUser);
-    console.log('button clicked');
-    
+  $('#my-profile').on('click', (event) => {
+    event.preventDefault();
+    displayUser(siteUser);
+  });  
   //});
   
   //initialize window
@@ -79,7 +78,8 @@ $(() => {
     
   });
 
-  $('#toggle-profile-panel').on('click', () => {
+  $('#toggle-profile-panel').on('click', (event) => {
+    event.preventDefault();
     $('#profile-toggle').slideToggle('slow', () => {});
   });
   
