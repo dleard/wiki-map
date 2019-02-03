@@ -1,25 +1,5 @@
 const login = false;
 
-let testMarkers = {
-
-    0:{
-    name: 'Home',
-    address: '123 Cool Guy Ln',
-    lat: 48.427,
-    long: -123.367,
-    type: 'Bar',
-    imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png'
-  },
-    1:{
-      name: 'Home2',
-      address: '125 Cool Guy Ln',
-      lat: 48.437,
-      long: -123.357,
-      type: 'Bar',
-      imgsrc: 'https://img00.deviantart.net/0418/i/2012/038/b/2/jake_the_dog_shimeji___fixed_by_wtfnel-d4oxwq9.png' 
-    }
-  
-};
 
 function containsEncodedComponents(x) {
   x.split('%20').join(' ');
@@ -57,6 +37,7 @@ function doNothing () {
 }
 
 $(() => {
+  let siteUser;
 
   initMap();
 
@@ -69,19 +50,7 @@ $(() => {
     $(this).css("visibility", "visible");
   });
 
-  $('.submit-button').on('click', function(event) {
-    event.preventDefault();
-    document.cookie = "handle=DemoDan";
-    $('#login-pane').slideUp(`fast`);
-    $.ajax({
-      method: "POST",
-      url: "/login",
-    }).done(function(user) {
-      console.log(user);
-     //get profile
-
-    });
-  });
+ 
 
   $('#login-btn').on('click', () => {
     console.log('login pressed!');
@@ -184,6 +153,25 @@ $(() => {
     });
   }
 
+  // GET USER FROM LOGIN
+  $('.submit-button').on('click', function(event) {
+    event.preventDefault();
+    document.cookie = "handle=DemoDan";
+    $('#login-pane').slideUp(`fast`);
+    $.ajax({
+      method: "POST",
+      url: "/login",
+    }).done(function(user) {
+      console.log(user);
+      //get profile
+      $('#profile-header').find('img')[0].src =`${user.avatar}`; 
+      $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
+      $('#profile-header').data({id: `${user.id}`});
+      attachProfileButtonListeners();
+
+    });
+  });
+
   // GET A USER'S MAPS - render maps to browser pane
   const attachProfileButtonListeners = () => {
     const {id} = $('#profile-header').data();
@@ -213,6 +201,6 @@ $(() => {
   }
 
   getAllMaps();
-  populateMarkers(testMarkers);
+ 
 //  END OF app.js  //
 });
