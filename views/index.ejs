@@ -121,10 +121,13 @@
         <div class='col-sm-2'>
           
           <h1 style='text-align: right'><span class="glyphicon glyphicon-star" ></span></h1>
+          <button id="my-profile" style= "visibility: hidden; float: right; top: 75%">My Profile</button>
         </div>
         <div class='col-sm-1' style='vertical-align:bottom; height: inherit'>
           
-          <button id="toggle-profile-panel" style= "float: right; top: 75%"class="glyphicon glyphicon-chevron-down" ></button>
+          
+        <button id="toggle-profile-panel" style= "visibility: hidden; float: right; top: 75%"class="glyphicon glyphicon-chevron-down" ></button>
+          
         </div>
       </div>
       <div class='row' id='browser-pane' style='background-color:#424242'>
@@ -148,8 +151,13 @@
           </section>
           
         </div>
+
+        <div id="no-user" class = 'col-sm-3' style="text-align: center">
+          <h3>Please Log In / Register</h3>
+
+        </div>
         <div id='profile-pane' class='col-sm-3'>
-          <div id='profile-toggle'>
+          <div id='profile-toggle' style='visibility: hidden'>
             <div id='profile-header' style = 'text-align: center; padding: 5px 3px 3px 5px'>
               <img style = "float: left"src = "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png" />
               <h3>Handle</h3>
@@ -159,6 +167,7 @@
                 <button type="button" class="btn btn-primary">Created</button>
                 <button type="button" class="btn btn-primary">Contributed To</button>
                 <button type="button" class="btn btn-primary">Favorited</button>
+                <button type ="button" style='visibility:hidden'class="btn btn-primary">Create New Map</button>
               </div>
             </div>
           </div>
