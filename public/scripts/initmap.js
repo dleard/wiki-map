@@ -267,6 +267,4 @@ function populateMarkers(markersdata){
     });
     markers.push(marker);
   };
-  
-  
 }

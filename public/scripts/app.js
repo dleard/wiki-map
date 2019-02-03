@@ -151,11 +151,51 @@ $(() => {
       });;
     });
 
+    const myPromise = new Promise((resolve, reject) => {
+      if (Math.random() * 100 <= 90) {
+          resolve('Hello, Promises!');
+      }
+      reject(new Error('In 10% of the cases, I fail. Miserably.'));
+  });
+
+    function getCityGeoLocation(city) {
+      return new Promise ((resolve, reject) => {
+        var geocoder =  new google.maps.Geocoder();
+        geocoder.geocode( { 'address': `${city}, canada`}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            const lat = (results[0].geometry.location.lat());
+            const long = results[0].geometry.location.lng();
+            const latLng = [lat, long];
+            resolve (latLng); 
+          } else {
+            console.log('fail');
+            reject('fail');
+          }
+        });
+      });
+     
+    }
+
     // CREATE A NEW MAP
     $('#submit-new-map').on('click', function(event) {
       event.preventDefault();
-      const newMapObj = {name: $('#mapNameNew').val(), city: $('#cityNew').val(), type: $('#typeNew').val()}
-      console.log(newMapObj);
+      const newMapObj = {name: $('#mapNameNew').val(), likes: 0, city: $('#cityNew').val(), type: $('#typeNew').val(), creatorid:`${$('#profile-header').data().id}`}
+      getCityGeoLocation($('#cityNew').val())
+      .then(
+        latLng => {
+          newMapObj.startlat = latLng[0];
+          newMapObj.startlong = latLng[1];
+          console.log(newMapObj);
+          // $.ajax({
+          //   method: "POST",
+          //   url: '/api/maps',
+          //   data: newMapObj
+          // }).done (() => {
+          //   console.log(`new map with name: ${newMapObj.name} added`);
+          // }); 
+        }
+      )
+      
     });
   }
 
