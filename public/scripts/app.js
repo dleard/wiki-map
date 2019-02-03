@@ -48,6 +48,7 @@ $(() => {
     $('#no-user').css('display', 'none');
   }
 
+  // displays user profile information in the profile pane
   const displayUser = (user) => {
     $('#my-profile').css('visibility', 'visible');
     $('#profile-toggle').css('visibility', 'visible');
@@ -59,12 +60,15 @@ $(() => {
     attachProfileButtonListeners();
   }
 
+  // TOGGLE FUNCTIONS
+
+  // Renders the currently logged in user's profile in the profile pane
   $('#my-profile').on('click', (event) => {
     event.preventDefault();
     displayUser(siteUser);
   });  
   
-
+  // Create new map button
   $('#newMap').on('click', (event) => {
     event.preventDefault();
     console.log('create new');
@@ -75,34 +79,20 @@ $(() => {
     $(this).css("visibility", "visible");
   });
 
-  
-
+  // Toggles login form
   $('#login-btn').on('click', () => {
     console.log('login pressed!');
     $('#login-pane').slideToggle('slow', () => {});
     
   });
 
+  // Toggles show profile pane
   $('#toggle-profile-panel').on('click', (event) => {
     event.preventDefault();
     $('#profile-toggle').slideToggle('slow', () => {});
   });
-  
-  let testMap = {
-    creatorid: 1,
-    handle: "DemoDan",
-    imgsrc: "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-    id: 1,
-    likes: 5,
-    city: 'Victoria',
-    name: "Places I Hate",
-    startlat: 48.422,
-    startlong: -123.362,
-    type: "Custom"
-   }
-
-
  
+  // Creates each map entry for the browser pane
   function createMapEntry(mapObject){
     //do biz
     const article = $('<article>').addClass("maplisting");
