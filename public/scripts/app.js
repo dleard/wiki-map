@@ -37,7 +37,7 @@ function doNothing () {
 }
 
 $(() => {
-  let siteUser=1;
+  let siteUser;
 
   initMap();
 
@@ -49,15 +49,22 @@ $(() => {
   }
 
   const displayUser = (user) => {
+    $('#my-profile').css('visibility', 'visible');
+    $('#profile-toggle').css('visibility', 'visible');
+    $('#toggle-profile-panel').css('visibility', 'visible');
+    $('#no-user').css('display', 'none');
     $('#profile-header').find('img')[0].src =`${user.avatar}`; 
     $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
     $('#profile-header').data({id: `${user.id}`});
     attachProfileButtonListeners();
   }
 
-  $('#my-profile').on('click', () => {
+  //$('#my-profile').on('click', () => {
+    //console.log(siteUser);
+    //displayUser(siteUser);
+    console.log('button clicked');
     
-  });
+  //});
   
   //initialize window
   $('#login-pane').slideUp(`fast`, function(){
