@@ -32,6 +32,14 @@ function saveData() {
   });
 }
 
+function deleteLocationData() {
+  console.log('delete buttoned!');
+}
+
+function editLocationData() {
+  console.log('edit buttoned!');
+}
+
 function doNothing () {
   console.log('Nothing done! Wait...shit');
 }
@@ -50,7 +58,13 @@ $(() => {
     $(this).css("visibility", "visible");
   });
 
- 
+  $('#edit-btn').on('click', function(event) {  
+    console.log('edit buttoned');
+  });
+
+  $('#delete-btn').on('click', function(event) {
+    console.log('delete buttoned');
+  });
 
   $('#login-btn').on('click', () => {
     console.log('login pressed!');

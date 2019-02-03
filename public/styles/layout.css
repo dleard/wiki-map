@@ -25,6 +25,10 @@ body h1 {
   color: #244751;
 }
 
+.location-info img {
+  margin-top: 45px;
+}
+
 #login-pane {
   visibility: hidden;
   top: 51px;
