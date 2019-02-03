@@ -71,8 +71,7 @@ $(() => {
   // Create new map button
   $('#newMap').on('click', (event) => {
     event.preventDefault();
-    console.log($('#create-map-form'));
-    console.log('create new');
+    $('#create-map-form').css('visibility', 'visible');
   });
   
   //initialize window
@@ -150,6 +149,13 @@ $(() => {
         attachMetaPaneHandleListener();
         populateMarkers(markers);
       });;
+    });
+
+    // CREATE A NEW MAP
+    $('#submit-new-map').on('click', function(event) {
+      event.preventDefault();
+      const newMapObj = {name: $('#mapNameNew').val(), city: $('#cityNew').val(), type: $('#typeNew').val()}
+      console.log(newMapObj);
     });
   }
 
