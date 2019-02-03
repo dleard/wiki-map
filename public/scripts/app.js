@@ -63,7 +63,12 @@ $(() => {
     event.preventDefault();
     displayUser(siteUser);
   });  
-  //});
+  
+
+  $('#newMap').on('click', (event) => {
+    event.preventDefault();
+    console.log('create new');
+  });
   
   //initialize window
   $('#login-pane').slideUp(`fast`, function(){
