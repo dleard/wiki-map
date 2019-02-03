@@ -27,7 +27,12 @@ body {
   }
 }
 
-
+#filter-buttons {
+  margin-left: 20px;
+  .btn {
+    width: 120px;
+  }
+}
 
 
 #login-pane {

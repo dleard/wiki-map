@@ -25,6 +25,14 @@ body h1 {
   color: #244751;
 }
 
+#filter-buttons {
+  margin-left: 20px;
+}
+
+#filter-buttons .btn {
+  width: 120px;
+}
+
 #login-pane {
   visibility: hidden;
   top: 51px;
