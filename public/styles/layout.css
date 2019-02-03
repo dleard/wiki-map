@@ -33,6 +33,10 @@ body h1 {
   width: 120px;
 }
 
+.location-info img {
+  margin-top: 45px;
+}
+
 #login-pane {
   visibility: hidden;
   top: 51px;
