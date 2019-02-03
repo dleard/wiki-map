@@ -88,6 +88,15 @@ input {
 #browser-pane {
   overflow: scroll;
   height: 80rem;
+
+  td {
+    width: 150px;
+
+    h4 {
+      float:left;
+      margin-right: 0;
+    }
+  }
 }
 
 #form {

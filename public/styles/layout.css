@@ -88,6 +88,15 @@ input {
   height: 80rem;
 }
 
+#browser-pane td {
+  width: 150px;
+}
+
+#browser-pane td h4 {
+  float: left;
+  margin-right: 0;
+}
+
 #form {
   position: relative;
   display: none;

@@ -99,12 +99,17 @@ $(() => {
     article.data("mapid", mapObject.id)
     .data("creatorId", mapObject.creatorid);
     
-    const avatar = $('<img>').addClass("logo").attr('src', mapObject.avatar).attr('width', '50px').attr('height', '50px').appendTo(article);
-    const h3 = $('<h3>').text(mapObject.name).appendTo(article);
+    $('<img>').addClass("logo").attr('src', mapObject.avatar).attr('width', '50px').attr('height', '50px').appendTo(article);
+    $('<h3>').text(mapObject.name).appendTo(article);
     const footer = $('<footer>').appendTo(article);
-    const h4_1 = $('<h4>').text(mapObject.handle).appendTo(footer);
-    const h4_2 = $('<h4>').text(mapObject.city).appendTo(footer);
-    const h4_3 = $('<h4>').text(mapObject.type).appendTo(footer);
+    const table = $('<table>').appendTo(footer);
+    const row = $('<tr>').appendTo(table);
+    let cell = $('<td>').appendTo(row);
+    $('<h4>').text(mapObject.handle).appendTo(cell);
+    cell= $('<td>').appendTo(row);
+    $('<h4>').text(mapObject.city).appendTo(cell);
+    cell = $('<td>').appendTo(row);
+    $('<h4>').text(mapObject.type).appendTo(cell);
     return article
   }
 
