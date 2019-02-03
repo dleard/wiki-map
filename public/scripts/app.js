@@ -71,6 +71,7 @@ $(() => {
   // Create new map button
   $('#newMap').on('click', (event) => {
     event.preventDefault();
+    console.log($('#create-map-form'));
     console.log('create new');
   });
   

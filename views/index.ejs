@@ -164,10 +164,36 @@
             </div>
               <div id='profile-body'>
                 <div class="btn-group-vertical">
-                <button type="button" class="btn btn-primary">Created</button>
-                <button type="button" class="btn btn-primary">Contributed To</button>
-                <button type="button" class="btn btn-primary">Favorited</button>
-                <button id="newMap" type ="button" style='visibility:hidden'class="btn btn-primary">Create New Map</button>
+                  <button type="button" class="btn btn-primary">Created</button>
+                  <button type="button" class="btn btn-primary">Contributed To</button>
+                  <button type="button" class="btn btn-primary">Favorited</button>
+                  <button id="newMap" type ="button" style='visibility:hidden'class="btn btn-primary">Create New Map</button>
+                </div>
+                <div id="create-map-form" style="padding: 5px; visibility: hidden">
+                  <form>
+                    <div class='form-group' style="margin-right: 20px;">
+                      <div class="form-group">
+                      <label for="name">Map Name</label>
+                      <input type="name" class="form-control" id="mapNameNew" placeholder="My Map">
+                      </div>
+                      <div class="form-group">
+                      <label for="city">City</label>
+                      <input type="city" class="form-control" id="cityNew" placeholder="Victoria">
+                      </div>
+                      <div class="form-group" >
+                        <label for="type">Type</label>
+                        <select class="form-control" id="typeNew" style="margin-left: 10px">
+                          <option>food</option>
+                          <option>entertainment</option>
+                          <option>nature</option>
+                          <option>recreation</option>
+                          <option>custom</option>
+                        </select>
+                      </div>
+                      <button class="btn btn-success" type="submit">Submit Map</button>
+                    </div> 
+                  </form>
+                </div>
               </div>
             </div>
           </div>
