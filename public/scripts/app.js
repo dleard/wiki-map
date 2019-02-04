@@ -37,32 +37,63 @@ function deleteLocationData() {
 }
 
 function editLocationData(value) {
-  console.log($('.location-info'));
+  console.log($('.location-info')[0].innerHTML);
   let input = value;
   let values = input.split('$');
   console.log(values[1]);
   let editObj = {};
   editObj.id = values[1];
+  
+  const newContent = `
+  <div style="width: 260px; height: 200px; padding: 1px; float:left">
+  <form>
+        <table>
+        <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
+        <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
+        <tr><td>Description:</td> <td><input type='text' id='description'/> </td> </tr>
+        <tr><td>Image URL:</td> <td><input type='text' id='imgsrc'/> </td> </tr>
+        <tr><td>Type:</td> <td><select style='float: right' id='type'> +
+                    <option value='Food' SELECTED>Food</option>
+                    <option value='Entertainment'>Entertainment</option>
+                    <option value='Entertainment'>Nature</option>
+                    <option value='Custom'>Custom</option>
+                    </select> </td></tr>           
+                    <tr><td></td>
+                    <div style='display: inline-block'> 
+                      <td><input type='button' value='Save' onclick='saveData()'/>
+                      <!-- <input type='button' value='Edit' onclick='doNothing()'/>
+                      <input type='button' value='Save' onclick='doNothing()'/></td> -->
+                      <td></td>
+                    </div>
+                  </tr>
+                    <!-- onclick='saveData()'--> 
+        </table>
+        <div style='visibility: hidden' id="message">Location saved</div>
+        
+      <form></div>`
+
   if (values[0] === 'edit') {
-    $.ajax({
-      method: "PUT",
-      url: `/api/markers/${values[1]}`,
-      data: editObj
-    }).done(() => {
-      console.log(`${editMarker} changed`);
-      // $("<div>").text(user.name).appendTo($("body"));
-    });;
+    $('.location-info')[0].innerHTML = newContent;
   }
-  if (values[0] === 'delete') {
-    $.ajax({
-      method: "DELETE",
-      url: `/api/markers/${values[1]}`,
-      data: editObj
-    }).done(() => {
-      console.log(`${editMarker} changed`);
-      // $("<div>").text(user.name).appendTo($("body"));
-    });;
-  }
+    //   $.ajax({
+  //     method: "PUT",
+  //     url: `/api/markers/${values[1]}`,
+  //     data: editObj
+  //   }).done(() => {
+  //     console.log(`${editMarker} changed`);
+  //     // $("<div>").text(user.name).appendTo($("body"));
+  //   });;
+  // }
+  // if (values[0] === 'delete') {
+  //   $.ajax({
+  //     method: "DELETE",
+  //     url: `/api/markers/${values[1]}`,
+  //     data: editObj
+  //   }).done(() => {
+  //     console.log(`${editMarker} changed`);
+  //     // $("<div>").text(user.name).appendTo($("body"));
+  //   });;
+  // }
 }
 
 function doNothing () {
@@ -133,7 +164,7 @@ $(() => {
   function renderMaps(dataObj){
     for (const obj of dataObj) {
       var $map = createMapEntry(obj);
-      $('.maplist-container').prepend($map); 
+      if (obj.id == 4) $('.maplist-container').prepend($map); 
     }   
     attachMapClickListener();
   }
