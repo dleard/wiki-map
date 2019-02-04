@@ -46,3 +46,4 @@ This app was created by Nick Doyle and Dylan Leard.
 - Marker editing and deleting is also limited to users who are logged in
 - Marker creation can be done by users who are not logged in, but will not persist
 - The log in button is currently hard-coded to a demo user
+- Development mode requires a google API key in the .env file for the map
