@@ -139,6 +139,10 @@ input {
   height: 20px;
 }
 
+.button-row {
+  padding: 5px 0px 5px 0px;
+}
+
 #profile-pane {
   border-radius: 5px;
   height: 90%;
