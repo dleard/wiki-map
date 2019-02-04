@@ -1,6 +1,3 @@
-const login = false;
-
-
 const containsEncodedComponents = (x) => {
   x.split('%20').join(' ');
   return x
@@ -200,8 +197,10 @@ $(() => {
     getFilteredMaps('custom');
   });  
 
+
+  // Log-in button hardcoded for demo
   //initialize window
-  $('#login-pane').slideUp(`fast`, function(){
+  /*$('#login-pane').slideUp(`fast`, function(){
     $(this).css("visibility", "visible");
   });
 
@@ -209,7 +208,7 @@ $(() => {
     console.log('login pressed!');
     $('#login-pane').slideToggle('slow', () => {});
     
-  });
+  });*/
 
   // Toggles show profile pane
   $('#toggle-profile-panel').on('click', (event) => {
@@ -377,10 +376,10 @@ $(() => {
   }
 
   // GET USER FROM LOGIN
-  $('.submit-button').on('click', (event) => {
+  $('#login-btn').on('click', (event) => {
     event.preventDefault();
     document.cookie = "handle=DemoDan";
-    $('#login-pane').slideUp(`fast`);
+    //$('#login-pane').slideUp(`fast`);
     $.ajax({
       method: "POST",
       url: "/login",
