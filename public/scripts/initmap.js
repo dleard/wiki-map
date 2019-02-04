@@ -266,7 +266,8 @@ function populateMarkers(markersdata){
       locationwindow.setContent( `<div class='location-info'><div style='float:left'>
       <img style='width:120px' src=${markerData.imgsrc}></div><div style='float:right; padding: 10px;'>
       <p><b>${markerData.name}</b></p><br/><p>Address:<br/>${markerData.address}</p><br/>
-      <p>Location Type: ${markerData.type}</p>
+      <p>Description:</p>
+      <p>${markerData.description}<p>
       <input id='edit-btn' type='button' onclick="editLocationData('${markerData.editPara}')" value='Edit'/>
       <input id='delete-btn' type='button' onclick="editLocationData('${markerData.deletePara}')" value='Delete'/></td></div></div>`);
       locationwindow.open(map, marker);
