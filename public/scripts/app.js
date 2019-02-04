@@ -73,6 +73,18 @@ $(() => {
     event.preventDefault();
     $('#create-map-form').css('visibility', 'visible');
   });
+
+  // Toggle favorite button
+  $('.glyphicon-star').on('click', (event => {
+    console.log('here');
+    if ($('.glyphicon-star').data().favorite === 'yes') {
+      $('.glyphicon-star').css('color', '');
+      $('.glyphicon-star').data({favorite:'no'});
+    } else {
+      $('.glyphicon-star').css('color', 'yellow');
+      $('.glyphicon-star').data({favorite: 'yes'});
+    }
+  }));
   
   // BROWSER FILTER BUTTONS
 
@@ -203,6 +215,7 @@ $(() => {
         url: `/api/maps/${mapid}/${siteUser.id}`
       }).done(() => {
         $('.glyphicon-star').css('color', 'yellow');
+        $('.glyphicon-star').data({favorite: 'yes'});
       }).catch(() => {
         $('.glyphicon-star').css('color', '');
       });
