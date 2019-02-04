@@ -307,7 +307,13 @@ $(() => {
       });;
     });
     $('#profile-body').find('button:nth-of-type(3)').on('click', function() {
-      console.log(`button THREE clicked on user ${$('#profile-header').data().id}'s profile`);
+      $.ajax({
+        method: "GET",
+        url: `/api/users/${id}/maps/favorited`
+      }).done((maps) => {
+        $('.maplist-container')[0].innerHTML = '';
+        renderMaps(maps);
+      });;
     });
   }
 
