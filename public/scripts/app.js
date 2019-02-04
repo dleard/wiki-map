@@ -1,3 +1,5 @@
+let siteUser;
+
 const containsEncodedComponents = (x) => {
   x.split('%20').join(' ');
   return x
@@ -107,7 +109,6 @@ const doNothing = () => {
 }
 
 $(() => {
-  let siteUser= {id: 2};
   
   initMap();
 
@@ -380,6 +381,7 @@ $(() => {
   $('#login-btn').on('click', (event) => {
     event.preventDefault();
     document.cookie = "handle=DemoDan";
+    siteUser = {id: 2};
     //$('#login-pane').slideUp(`fast`);
     $.ajax({
       method: "POST",
