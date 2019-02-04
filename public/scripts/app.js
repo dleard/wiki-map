@@ -112,7 +112,7 @@ $(() => {
   
   initMap();
 
-  if (siteUser) {
+  if (siteUser || document.cookie) {
     $('#my-profile').css('visibility', 'visible');
     $('#profile-toggle').css('visibility', 'visible');
     $('#toggle-profile-panel').css('visibility', 'visible');
@@ -245,14 +245,7 @@ $(() => {
   const renderMaps = (dataObj) => {
     for (const obj of dataObj) {
       var $map = createMapEntry(obj);
-<<<<<<< HEAD
         $('.maplist-container').prepend($map); 
-=======
-      
-      $('.maplist-container').prepend($map); 
-      
-      
->>>>>>> bugfix/ui
     }   
     attachMapClickListener();
   }
