@@ -19,6 +19,7 @@ const knexLogger  = require('knex-logger');
 const usersRoutes = require("./routes/users");
 const mapsRoutes = require("./routes/maps");
 const markersRoutes = require("./routes/markers");
+const favoritesRoutes = require("./routes/favorites");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -46,6 +47,7 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/maps", mapsRoutes(knex));
 app.use("/api/markers", markersRoutes(knex));
+app.use("/api/favorites", favoritesRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {

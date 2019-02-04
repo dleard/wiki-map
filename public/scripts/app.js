@@ -77,12 +77,31 @@ $(() => {
   // Toggle favorite button
   $('.glyphicon-star').on('click', (event => {
     console.log('here');
+    const newFav = {mapid: $('#meta-pane').data().mapid, userid: $('#profile-header').data().id};
     if ($('.glyphicon-star').data().favorite === 'yes') {
       $('.glyphicon-star').css('color', '');
       $('.glyphicon-star').data({favorite:'no'});
+      $.ajax({
+        method: "DELETE",
+        url: `/api/favorites/${newFav.userid}/${newFav.mapid}`,
+        data: newFav
+      }).done ((result) => {
+        console.log(`Favorite removed`);
+        $('.glyphicon-star').css('color', '');
+        $('.glyphicon-star').data({favorite: 'no'});
+      });
     } else {
-      $('.glyphicon-star').css('color', 'yellow');
-      $('.glyphicon-star').data({favorite: 'yes'});
+      
+      console.log(newFav)
+      $.ajax({
+        method: "POST",
+        url: '/api/favorites',
+        data: newFav
+      }).done ((result) => {
+        console.log(`New favorite with id: ${result} added`);
+        $('.glyphicon-star').css('color', 'yellow');
+        $('.glyphicon-star').data({favorite: 'yes'});
+      });
     }
   }));
   
