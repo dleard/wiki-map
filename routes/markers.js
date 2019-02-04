@@ -24,7 +24,6 @@ module.exports = (knex) => {
     const edit = {};
     for (let key in req.body) {
       edit[key] = req.body[key];
-      console.log(edit[key]);
     }
     const changedAttrs = Object.keys(req.body);
     console.log(edit);
