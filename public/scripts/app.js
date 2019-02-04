@@ -60,9 +60,6 @@ function saveData(id) {
   
 }
 
-function deleteLocationData() {
-  console.log('delete buttoned!');
-}
 
 function editLocationData(value) {
   console.log($('.location-info'));
@@ -106,6 +103,7 @@ function editLocationData(value) {
       data: deleteObj
     }).done(() => {
       console.log(`Marker deleted!`);
+      getAllMaps();
       // $("<div>").text(user.name).appendTo($("body"));
     });;
   }
