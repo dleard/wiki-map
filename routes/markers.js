@@ -8,6 +8,7 @@ router.use(methodOverride('_method'));
 
 module.exports = (knex) => {
 
+  // GET ALL INFORMATION FOR ONE MARKER
   router.get("/:id", (req, res) => {
     knex
       .select("*")
@@ -18,6 +19,7 @@ module.exports = (knex) => {
     });
   });
 
+  // EDIT ONE MARKER
   router.put("/:id", (req, res) => {
     const edit = {};
     for (let key in req.body) {
@@ -33,6 +35,7 @@ module.exports = (knex) => {
     });
   });
 
+  // ADD A MARKER
   router.post("/", (req, res) => {
     knex("markers")
     .insert(req.body)
@@ -42,6 +45,7 @@ module.exports = (knex) => {
     });
   });
 
+  // DELETE A MARKER
   router.delete("/:id", (req, res) => {
     knex("markers")
     .where("id", `${req.params.id}`)

@@ -5,6 +5,7 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
+  // GET ALL MAPS
   router.get("/", (req, res) => {
     knex
       .select(["maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar"])
@@ -15,6 +16,7 @@ module.exports = (knex) => {
     });
   });
 
+  // GET A LIST OF MAPS FILTERED BY TYPE
   router.get("/filter/:filter", (req, res) => {
     knex
       .select(["maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar"])
@@ -26,6 +28,7 @@ module.exports = (knex) => {
     });
   });
 
+  // GET ALL MARKERS FOR A MAP
   router.get("/:id", (req, res) => {
     knex
       .select("markers.name", "markers.id", "address", "markers.type", "lat", "long", "imgsrc", "contributorid", "mapid", "maps.startlat", "maps.startlong")
@@ -37,6 +40,7 @@ module.exports = (knex) => {
       });
   });
 
+  // GET A SINGLE MAP
   router.get("/map/:id", (req, res) => {
     knex
       .select("maps.startlat", "maps.startlong")
@@ -47,6 +51,7 @@ module.exports = (knex) => {
       });
   });
 
+  // GET A LIST OF MAPS FAVORITED BY A USER
   router.get("/:mapid/:userid", (req, res) => {
     knex
       .select("maps.id")
@@ -59,6 +64,7 @@ module.exports = (knex) => {
       });
   });
 
+  // ADD A MAP
   router.post("/", (req, res) => {
     knex("maps")
       .returning('id')

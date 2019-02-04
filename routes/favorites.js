@@ -8,6 +8,7 @@ router.use(methodOverride('_method'));
 
 module.exports = (knex) => {
 
+  // FAVORITE A MAP
   router.post("/", (req, res) => {
     knex("favorites")
       .returning('id')
@@ -17,6 +18,7 @@ module.exports = (knex) => {
       });
   });
 
+  // UN-FAVORITE A MAP
   router.delete("/:userid/:mapid", (req, res) => {
     knex("favorites")
     .where("userid", `${req.params.userid}`)

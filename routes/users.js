@@ -5,6 +5,7 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
+  // GET ALL USERS
   router.get("/", (req, res) => {
     knex
       .select("*")
@@ -14,6 +15,7 @@ module.exports = (knex) => {
     });
   });
 
+  // GET A SINGLE USER
   router.get("/:id", (req, res) => {
     knex
       .select("*")
@@ -24,6 +26,7 @@ module.exports = (knex) => {
     });
   });
 
+  // GET ALL MAPS FROM A SINGLE USER
   router.get("/:id/maps", (req, res) => {
     knex
       .select("*")
@@ -35,6 +38,7 @@ module.exports = (knex) => {
     });
   });
 
+  // GET ALL MAPS A USER HAS CONTRIBUTED TO
   router.get("/:id/maps/contributed", (req, res) => {
     knex
       .distinct("maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar")
@@ -48,6 +52,7 @@ module.exports = (knex) => {
     });
   });
 
+  // GET ALL MAPS A USER HAS FAVORITED
   router.get("/:id/maps/favorited", (req, res) => {
     knex
       .distinct("maps.id", "maps.name", "maps.likes", "maps.type", "maps.city", "maps.creatorid", "users.handle", "users.avatar")
@@ -61,6 +66,7 @@ module.exports = (knex) => {
     });
   });
 
+  // ADD A FAVORITE
   router.post("/:id/favorites", (req, res) => {
     knex("favorites")
       .insert(req.body)
