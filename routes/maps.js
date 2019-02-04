@@ -47,6 +47,18 @@ module.exports = (knex) => {
       });
   });
 
+  router.get("/:mapid/:userid", (req, res) => {
+    knex
+      .select("maps.id")
+      .from("maps")
+      .join("favorites", "maps.id", "=", "favorites.mapid")
+      .where({'maps.id': `${req.params.mapid}`})
+      .andWhere({'favorites.userid': `${req.params.userid}`})
+      .then((results) => {
+        res.json(results[0]);
+      });
+  });
+
   router.post("/", (req, res) => {
     console.log(req.body);
     knex("maps")

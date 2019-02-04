@@ -37,7 +37,7 @@ function doNothing () {
 }
 
 $(() => {
-  let siteUser=1;
+  let siteUser= {id: 2};
   
   initMap();
 
@@ -198,6 +198,14 @@ $(() => {
           })
         }
       });;
+      $.ajax({
+        method: "GET",
+        url: `/api/maps/${mapid}/${siteUser.id}`
+      }).done(() => {
+        $('.glyphicon-star').css('color', 'yellow');
+      }).catch(() => {
+        $('.glyphicon-star').css('color', '');
+      });
     });
 
     function getCityGeoLocation(city) {
