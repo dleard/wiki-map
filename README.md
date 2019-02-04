@@ -33,6 +33,10 @@ This app was created by Nick Doyle and Dylan Leard.
 ## Getting Started
 
 - Install all dependencies (using the `npm install` command).
+- create psql database `midterm`
+- run knex commands:
+- knex migrate:latest
+- knex seed:run
 - Run the development web server using the `node run local` command.
 
 ## Using the app
