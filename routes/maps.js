@@ -60,7 +60,6 @@ module.exports = (knex) => {
   });
 
   router.post("/", (req, res) => {
-    console.log(req.body);
     knex("maps")
       .returning('id')
       .insert(req.body)
