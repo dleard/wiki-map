@@ -211,7 +211,14 @@ $(() => {
     $(this).css("visibility", "visible");
   });
 
-  // Toggles login form
+  $('#edit-btn').on('click', function(event) {  
+    console.log('edit buttoned');
+  });
+
+  $('#delete-btn').on('click', function(event) {
+    console.log('delete buttoned');
+  });
+
   $('#login-btn').on('click', () => {
     console.log('login pressed!');
     $('#login-pane').slideToggle('slow', () => {});
