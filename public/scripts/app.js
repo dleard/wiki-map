@@ -121,9 +121,12 @@ $(() => {
 
   // displays user profile information in the profile pane
   const displayUser = (user) => {
+    if (siteUser) {
     $('#my-profile').css('visibility', 'visible');
-    $('#profile-toggle').css('visibility', 'visible');
     $('#toggle-profile-panel').css('visibility', 'visible');
+    }
+    $('#profile-toggle').css('visibility', 'visible');
+    
     $('#no-user').css('display', 'none');
     $('#profile-header').find('img')[0].src =`${user.avatar}`; 
     $('#profile-header').find('h3')[0].innerText =`${user.handle}`;
