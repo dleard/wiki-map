@@ -103,7 +103,7 @@ function editLocationData(value) {
       data: deleteObj
     }).done(() => {
       console.log(`Marker deleted!`);
-      getAllMaps();
+      initMap();
       // $("<div>").text(user.name).appendTo($("body"));
     });;
   }
