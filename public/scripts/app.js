@@ -62,10 +62,8 @@ function saveData(id) {
 
 
 function editLocationData(value) {
-  console.log($('.location-info'));
   let input = value;
   let values = input.split('$');
-  console.log(values[1]);
   let deleteObj = {};
   deleteObj.id = values[1];
   const newContent = `
@@ -97,14 +95,13 @@ function editLocationData(value) {
   }
 
   if (values[0] === 'delete') {
+    deleteMarker(values[2]);
     $.ajax({
       method: "DELETE",
       url: `/api/markers/${values[1]}`,
       data: deleteObj
     }).done(() => {
       console.log(`Marker deleted!`);
-      initMap();
-      // $("<div>").text(user.name).appendTo($("body"));
     });;
   }
 }
