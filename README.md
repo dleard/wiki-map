@@ -10,8 +10,8 @@ This app was created by Nick Doyle and Dylan Leard.
 !["Screenshot of URLs Page: "](https://github.com/dleard/wiki-map/blob/master/surfing.png)
 
 ## Screenshots
-!["Screenshot of URLs Page: "](https://github.com/dleard/TinyApp/blob/master/docs/indexPage.png)
-!["Screenshot of Edit Page: "](https://github.com/dleard/TinyApp/blob/master/docs/editPage.png)
+!["Screenshot of a Populated Map: "](https://github.com/dleard/wiki-map/blob/master/mapwithpoints.png)
+!["Screenshot of The Browser Pane: "](https://github.com/dleard/wiki-map/blob/master/browserpane.png)
 
 ## Dependencies
 
