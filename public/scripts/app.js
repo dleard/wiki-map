@@ -253,9 +253,9 @@ $(() => {
   function renderMaps(dataObj){
     for (const obj of dataObj) {
       var $map = createMapEntry(obj);
-      if (obj.id == 4) {
-        $('.maplist-container').prepend($map); 
-      }
+      
+      $('.maplist-container').prepend($map); 
+      
       
     }   
     attachMapClickListener();
@@ -380,7 +380,7 @@ $(() => {
   // GET A USER - render details to profile pane
   const attachMetaPaneHandleListener = () => {
     ($('#meta-pane').find('a')).on('click', function() {
-      const userId = $(this).parent().parent().data().id;
+      const userId = $(this).parent().parent().parent().data().id;
       $.ajax({
         method: "GET",
         url: `/api/users/${userId}`,
