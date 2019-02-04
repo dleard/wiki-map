@@ -27,13 +27,13 @@ module.exports = (knex) => {
     }
     const changedAttrs = Object.keys(req.body);
     console.log(edit);
-    // knex("markers")
-    //   .where({id: `${req.params.id}`})
-    //   .update(edit,changedAttrs)
-    //   .then((results) => {
-    //     console.log(`Values changed: ${results}`);
-    //     res.sendStatus(200);
-    // });
+    knex("markers")
+      .where({id: `${req.params.id}`})
+      .update(edit,changedAttrs)
+      .then((results) => {
+        console.log(`Values changed: ${results}`);
+        res.sendStatus(200);
+    });
   });
 
   router.post("/", (req, res) => {
