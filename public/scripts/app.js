@@ -298,9 +298,9 @@ $(() => {
           url: `/api/maps/map/${mapid}`
           }).done((maps) => {
             initMap(maps[0].startlat, maps[0].startlong);
-          })
+          });
         }
-      });;
+      });
       $.ajax({
         method: "GET",
         url: `/api/maps/${mapid}/${siteUser.id}`
