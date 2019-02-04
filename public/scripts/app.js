@@ -352,6 +352,7 @@ $(() => {
               populateMarkers(markers);
               initMap(newMapObj.startlat, newMapObj.startlong);
               $('#create-map-form').css('visibility', 'hidden');
+              getAllMaps();
             });;
           }); 
         }
