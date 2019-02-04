@@ -31,7 +31,6 @@ module.exports = (knex) => {
       .join('users', 'maps.creatorid', '=', 'users.id')
       .where({creatorid: `${req.params.id}`})
       .then((results) => {
-        console.log(results);
         res.json(results);
     });
   });
@@ -45,7 +44,6 @@ module.exports = (knex) => {
       .join('markers', 'maps.id', '=', 'markers.contributorid')
       .where('markers.contributorid', `${req.params.id}`)
       .then((results) => {
-        console.log(results);
         res.json(results);
     });
   });

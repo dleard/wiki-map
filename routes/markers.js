@@ -9,7 +9,6 @@ router.use(methodOverride('_method'));
 module.exports = (knex) => {
 
   router.get("/:id", (req, res) => {
-    console.log(req.params.id);
     knex
       .select("*")
       .from("markers")
@@ -20,13 +19,11 @@ module.exports = (knex) => {
   });
 
   router.put("/:id", (req, res) => {
-    console.log('body:' + req.body);
     const edit = {};
     for (let key in req.body) {
       edit[key] = req.body[key];
     }
     const changedAttrs = Object.keys(req.body);
-    console.log(edit);
     knex("markers")
       .where({id: `${req.params.id}`})
       .update(edit,changedAttrs)

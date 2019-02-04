@@ -55,7 +55,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  console.log(req);
   knex
       .select('*')
       .from("users")

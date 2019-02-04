@@ -1,12 +1,12 @@
 const login = false;
 
 
-function containsEncodedComponents(x) {
+const containsEncodedComponents = (x) => {
   x.split('%20').join(' ');
   return x
 }
 
-function saveData(id) {
+const saveData = (id) => {
   console.log("saving data!");
   const markerObj = {};
   if (id) {
@@ -33,7 +33,6 @@ function saveData(id) {
         data: markerObj
       }).done(() => {
         console.log(`Marker changed`);
-        // $("<div>").text(user.name).appendTo($("body"));
       });
     });
   } else {
@@ -61,7 +60,7 @@ function saveData(id) {
 }
 
 
-function editLocationData(value) {
+const editLocationData = (value) => {
   let input = value;
   let values = input.split('$');
   let deleteObj = {};
@@ -106,7 +105,7 @@ function editLocationData(value) {
   }
 }
 
-function doNothing () {
+const doNothing = () => {
   console.log('Nothing done! Wait...shit');
 }
 
@@ -165,8 +164,6 @@ $(() => {
         $('.glyphicon-star').data({favorite: 'no'});
       });
     } else {
-      
-      console.log(newFav)
       $.ajax({
         method: "POST",
         url: '/api/favorites',
@@ -181,24 +178,24 @@ $(() => {
   
   // BROWSER FILTER BUTTONS
 
-  $('#filter-buttons').find('button:nth-of-type(1)').on('click', function(event) {
+  $('#filter-buttons').find('button:nth-of-type(1)').on('click', (event) => {
     event.preventDefault();
     $('.maplist-container')[0].innerHTML = '';
     getAllMaps();
   });
-  $('#filter-buttons').find('button:nth-of-type(2)').on('click', function(event) {
+  $('#filter-buttons').find('button:nth-of-type(2)').on('click', (event) => {
     event.preventDefault();
     getFilteredMaps('food');
   });  
-  $('#filter-buttons').find('button:nth-of-type(3)').on('click', function(event) {
+  $('#filter-buttons').find('button:nth-of-type(3)').on('click', (event) => {
     event.preventDefault();
     getFilteredMaps('entertainment');
   });  
-  $('#filter-buttons').find('button:nth-of-type(4)').on('click', function(event) {
+  $('#filter-buttons').find('button:nth-of-type(4)').on('click', (event) => {
     event.preventDefault();
     getFilteredMaps('nature');
   });  
-  $('#filter-buttons').find('button:nth-of-type(5)').on('click', function(event) {
+  $('#filter-buttons').find('button:nth-of-type(5)').on('click', (event) => {
     event.preventDefault();
     getFilteredMaps('custom');
   });  
@@ -206,14 +203,6 @@ $(() => {
   //initialize window
   $('#login-pane').slideUp(`fast`, function(){
     $(this).css("visibility", "visible");
-  });
-
-  $('#edit-btn').on('click', function(event) {  
-    console.log('edit buttoned');
-  });
-
-  $('#delete-btn').on('click', function(event) {
-    console.log('delete buttoned');
   });
 
   $('#login-btn').on('click', () => {
@@ -229,7 +218,7 @@ $(() => {
   });
  
   // Creates each map entry for the browser pane
-  function createMapEntry(mapObject){
+  const createMapEntry = (mapObject) => {
     //do biz
     const article = $('<article>').addClass("maplisting");
     article.data("mapid", mapObject.id)
@@ -250,13 +239,10 @@ $(() => {
   }
 
   // Render maps to browser pane
-  function renderMaps(dataObj){
+  const renderMaps = (dataObj) => {
     for (const obj of dataObj) {
       var $map = createMapEntry(obj);
-      if (obj.id == 4) {
         $('.maplist-container').prepend($map); 
-      }
-      
     }   
     attachMapClickListener();
   }
@@ -298,7 +284,6 @@ $(() => {
         url: `/api/maps/${mapid}`
       }).done((markers) => {
         console.log('AJAX GET MARKERS DONE');
-        console.log(markers);
         $("#meta-pane").find('h3')[0].innerHTML = `<img src = ${avatar}></img>${handle}`;
         $('#meta-pane').find('h2')[0].innerHTML = `${title}`;
         $('#meta-pane').data({id: creatorId, mapid});
@@ -324,9 +309,9 @@ $(() => {
       });
     });
 
-    function getCityGeoLocation(city) {
+    const getCityGeoLocation = (city) => {
       return new Promise ((resolve, reject) => {
-        var geocoder =  new google.maps.Geocoder();
+        const geocoder =  new google.maps.Geocoder();
         geocoder.geocode( { 'address': `${city}, canada`}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             const lat = (results[0].geometry.location.lat());
@@ -343,7 +328,7 @@ $(() => {
     }
 
     // CREATE A NEW MAP
-    $('#submit-new-map').on('click', function(event) {
+    $('#submit-new-map').on('click', (event) => {
       event.preventDefault();
       const newMapObj = {name: $('#mapNameNew').val(), likes: 0, city: $('#cityNew').val(), type: $('#typeNew').val(), creatorid:`${$('#profile-header').data().id}`}
       getCityGeoLocation($('#cityNew').val())
@@ -392,7 +377,7 @@ $(() => {
   }
 
   // GET USER FROM LOGIN
-  $('.submit-button').on('click', function(event) {
+  $('.submit-button').on('click', (event) => {
     event.preventDefault();
     document.cookie = "handle=DemoDan";
     $('#login-pane').slideUp(`fast`);
@@ -410,7 +395,7 @@ $(() => {
     const {id} = $('#profile-header').data();
     if (id == siteUser.id) { $('#newMap').css('visibility', 'visible'); }
     else { $('#newMap').css('visibility', 'hidden'); }
-    $('#profile-body').find('button:nth-of-type(1)').on('click', function() {
+    $('#profile-body').find('button:nth-of-type(1)').on('click', () => {
       $.ajax({
         method: "GET",
         url: `/api/users/${id}/maps`
@@ -420,7 +405,7 @@ $(() => {
       });;
     });
     
-    $('#profile-body').find('button:nth-of-type(2)').on('click', function() {
+    $('#profile-body').find('button:nth-of-type(2)').on('click', () => {
       $.ajax({
         method: "GET",
         url: `/api/users/${id}/maps/contributed`
@@ -430,7 +415,7 @@ $(() => {
         renderMaps(maps);
       });;
     });
-    $('#profile-body').find('button:nth-of-type(3)').on('click', function() {
+    $('#profile-body').find('button:nth-of-type(3)').on('click', () => {
       $.ajax({
         method: "GET",
         url: `/api/users/${id}/maps/favorited`
